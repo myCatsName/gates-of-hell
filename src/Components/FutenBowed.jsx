@@ -1,0 +1,25 @@
+import { Image } from "@chakra-ui/react";
+import Futen_Bowed from "../Assets/Futen_bowed_trans.png";
+import { playOM } from "../Sound/SFX";
+import { useContext } from "react";
+import GameContext from "../Context/GameContext";
+
+export default function FutenBowed() {
+  const { setOmCount } = useContext(GameContext);
+  const handleClick = () => {
+    playOM();
+    setOmCount((prev) => prev + 1);
+    console.log("Futen Has Been Pressed");
+  };
+
+  return (
+    <Image
+      src={Futen_Bowed}
+      alt="The monk Futen bows"
+      position={"absolute"}
+      bottom="2"
+      right="10"
+      onClick={handleClick}
+    />
+  );
+}
