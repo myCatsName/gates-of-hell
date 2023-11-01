@@ -144,37 +144,29 @@ export function MemoryGame() {
     <Grid templateColumns="repeat(12, 1fr)" className="MemoryGameLayout">
       <GridItem className="MemoryGameLeft" gridColumn="1/4">
         {deckLeft.map((card) => (
-          <div className="GameCard" key={card.id}>
-            <MemoryCard
-              key={card.id}
-              card={card}
-              handleChoice={handleChoice}
-              disabled={disabled}
-              flipped={
-                card === choiceOne ||
-                card === choiceTwo ||
-                card.matched === true
-              }
-            />
-          </div>
+          <MemoryCard
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            disabled={disabled}
+            flipped={
+              card === choiceOne || card === choiceTwo || card.matched === true
+            }
+          />
         ))}
       </GridItem>
       <GridItem gridColumn="4/10"></GridItem>
       <GridItem className="MemoryGameRight" gridColumn="10/13">
         {deckRight.map((card) => (
-          <div className="GameCard" key={card.id}>
-            <MemoryCard
-              key={card.id}
-              card={card}
-              handleChoice={handleChoice}
-              disabled={disabled}
-              flipped={
-                card === choiceOne ||
-                card === choiceTwo ||
-                card.matched === true
-              }
-            />
-          </div>
+          <MemoryCard
+            key={card.id}
+            card={card}
+            handleChoice={handleChoice}
+            disabled={disabled}
+            flipped={
+              card === choiceOne || card === choiceTwo || card.matched === true
+            }
+          />
         ))}
       </GridItem>
     </Grid>

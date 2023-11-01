@@ -6,17 +6,15 @@ export default function MemoryCard({ card, handleChoice, flipped, disabled }) {
   };
 
   return (
-    <div className="GameCard">
-      <div className={flipped ? "flipped" : ""}>
-        <img className="CardFront" src={card.card} alt="Memory Card Face" />
+    <div className={`GameCard ${flipped ? "flipped" : ""}`}>
+      <img className="CardFront" src={card.card} alt="Memory Card Face" />
 
-        <img
-          className="CardReverse"
-          src={CardBack}
-          alt="Memory Card Reverse"
-          onClick={handleClick}
-        />
-      </div>
+      <img
+        className="CardReverse"
+        src={CardBack}
+        alt="Memory Card Reverse"
+        onClick={handleClick}
+      />
     </div>
   );
 }
