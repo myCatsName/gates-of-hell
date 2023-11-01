@@ -3,7 +3,7 @@ import MemoryCard from "./MemoryCard";
 import { Grid, GridItem } from "@chakra-ui/react";
 import GameContext from "../Context/GameContext";
 
-//Assets should be separated, feed deck to MemoryGame as prop
+// TODO: Assets should be separated, feed deck to MemoryGame as prop
 import Fudo_icon from "../Assets/Fudo_icon.png";
 import Achala from "../Assets/CardFaces/Arya_Achala.jpg";
 import dazu_baoding_shan from "../Assets/CardFaces/dazu_baoding.png";
@@ -60,12 +60,6 @@ export function MemoryGame() {
   useEffect(() => {
     shuffleCards();
   }, []);
-
-  const deckLeft = [];
-  const deckRight = [];
-  for (let i = 0; i < deck.length; i++) {
-    i < deck.length / 2 ? deckLeft.push(deck[i]) : deckRight.push(deck[i]);
-  }
 
   const resetTurn = () => {
     setChoiceOne(null);
@@ -139,6 +133,12 @@ export function MemoryGame() {
     setCycleCount,
     setPerfectCycles,
   ]);
+
+  const deckLeft = [];
+  const deckRight = [];
+  for (let i = 0; i < deck.length; i++) {
+    i < deck.length / 2 ? deckLeft.push(deck[i]) : deckRight.push(deck[i]);
+  }
 
   return (
     <Grid templateColumns="repeat(12, 1fr)" className="MemoryGameLayout">
