@@ -1,5 +1,3 @@
-import "../App.css";
-
 //react
 import { Grid, GridItem } from "@chakra-ui/react";
 import { useContext } from "react";
