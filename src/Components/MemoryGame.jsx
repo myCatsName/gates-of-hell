@@ -40,10 +40,10 @@ export function MemoryGame() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [disabled, setDisabled] = useState(false);
-  const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
-  const { setCycleCount, setPerfectCycles } = useContext(GameContext);
   const [isPerfect, setIsPerfect] = useState(true);
   const [gameFinished, setGameFinished] = useState(false);
+  const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
+  const { setCycleCount, setPerfectCycles } = useContext(GameContext);
 
   function shuffleCards() {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -115,15 +115,17 @@ export function MemoryGame() {
         hauntingDrumsSFX.play();
         console.log("Game Won");
         setCycleCount((prev) => prev + 1);
-        isPerfect && setPerfectCycles((prev) => prev + 1);
+        isPerfect &&
+          setPerfectCycles((prev) => prev + 1) &&
+          console.log("Perfect!");
         setGameFinished(true);
         setTimeout(() => {
           shuffleCards();
-        }, 4400);
+        }, 4500);
       }
       //no match
       else {
-        setIsPerfect(false);
+        isPerfect && setIsPerfect(false);
         setTimeout(() => resetTurn(), 600);
         cleansingBellSFX.play();
         console.log("no match");

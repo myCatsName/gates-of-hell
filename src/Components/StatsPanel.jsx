@@ -25,9 +25,11 @@ export default function StatsPanel() {
         bottom: "0px",
       }}
     >
-      <ul>OMs : {omCount}</ul>
-      <ul>Perfect Cycles : {perfectCycles}</ul>
-      <ul>Cycles Cleared : {cycleCount}</ul>
+      <ul style={{ listStyle: "none" }}>
+        <li>OMs : {omCount}</li>
+        <li>Perfect Cycles : {perfectCycles}</li>
+        <li>Cycles Cleared : {cycleCount}</li>
+      </ul>
     </Box>
   );
 }

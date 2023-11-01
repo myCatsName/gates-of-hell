@@ -37,12 +37,12 @@ export const cleansingBellSFX = new Howl({
   rate: 0.85,
 });
 
-/* the volume of music is dropped to by half when HAUNTINGDRUMSSFX plays as the "win" theme,
+/* the volume of music is dropped by half when HAUNTINGDRUMSSFX plays as the "win" theme,
  so the onend function puts it back up. It works, but fade would be better, and should
  not be handled in the SFX anyways. TODO: Make a victory method.*/
 export const hauntingDrumsSFX = new Howl({
   src: [hauntingDrums],
-  volume: 3,
+  volume: 2.5,
   rate: 1,
   onend: function () {
     Howler.volume(1);
