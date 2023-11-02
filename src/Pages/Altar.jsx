@@ -6,12 +6,12 @@ export function Altar() {
       className="Altar"
       style={{
         textAlign: "center",
-        alignSelf: "center",
-        fontSize: "2em",
+        fontSize: "8em",
         fontFamily: "Allison, cursive",
       }}
     >
-      <Typewriter text="Fudō is Coming" delay={150} />
+      Fudō is Coming
+      {/* <Typewriter text="Fudō is Coming" delay={220} /> */}
     </div>
   );
 }

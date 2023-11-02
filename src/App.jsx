@@ -11,7 +11,6 @@ import {
 
 // Pages
 import RootLayout from "./Layouts/RootLayout";
-import WarningModal from "./Components/WarningModal";
 import TitleScreen from "./Layouts/TitleScreen";
 import { MemoryGame } from "./Components/MemoryGame";
 

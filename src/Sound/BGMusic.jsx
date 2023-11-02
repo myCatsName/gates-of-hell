@@ -11,6 +11,8 @@ import TendaiTension4 from "../Sound/TendaiTension/TendaiTension4.mp3";
 
 import GomaDo from "../Sound/GomaDo/GomaDo.mp3";
 
+import MeditationCushion from "../Sound/MeditationCushion/MeditationCushion.mp3";
+
 const slightBackgroundSegment = [
   SlightBackground,
   SlightBackground2,
@@ -95,3 +97,12 @@ export const GomaDoMusic = new Howl({
   loop: true,
   volume: 0.6,
 });
+
+export function playMeditationCushion() {
+  const MeditationCushionMusic = new Howl({
+    src: [MeditationCushion],
+    loop: true,
+    volume: 0.6,
+  });
+  MeditationCushionMusic.play();
+}
