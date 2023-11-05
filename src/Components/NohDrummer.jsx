@@ -13,13 +13,14 @@ export default function NohDrummer() {
   return (
     <Image
       src={Noh_drummer}
+      className="OverlayImage NohDrummer"
       maxH={"300px"}
       alt="Young Man Playing a Noh Drum"
       position={"absolute"}
       bottom="-3"
       left="-15"
       onClick={handleClick}
-      zIndex={0}
+      zIndex={"2"}
     ></Image>
   );
 }

@@ -14,12 +14,14 @@ export default function FutenBowed() {
 
   return (
     <Image
+      className="OverlayImage FutenBows"
       src={Futen_Bowed}
       alt="The monk Futen bows"
       position={"absolute"}
       bottom="2"
       right="10"
       onClick={handleClick}
+      zIndex="2"
     />
   );
 }
