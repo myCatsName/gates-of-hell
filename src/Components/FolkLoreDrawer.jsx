@@ -9,8 +9,13 @@ import {
   DrawerOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-import shadowedBackground from "../Assets/Swatches/shadowedBackground.png";
 import FooterButton from "./FooterButton";
+
+//Backgrounds
+import shadowedBackground from "../Assets/Swatches/shadowedBackground.png";
+
+const backgroundOptions = [shadowedBackground];
+const backgroundToUse = 0;
 
 export default function FolkLoreDrawer() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,9 +36,8 @@ export default function FolkLoreDrawer() {
         <DrawerOverlay />
         <DrawerContent
           backgroundColor="#999"
-          backgroundImage={shadowedBackground}
+          backgroundImage={backgroundOptions[backgroundToUse]}
           backgroundRepeat={"round"}
-          /* bgSize={"cover"} */
         >
           <CloseButton onClick={onClose} />
           <DrawerHeader></DrawerHeader>

@@ -1,6 +1,9 @@
-import CardBack from "../Assets/CardFaces/PlayingCardReverse.png";
+import { useContext } from "react";
+import ThemeContext from "../Context/ThemeContext";
 
 export default function MemoryCard({ card, handleChoice, flipped, disabled }) {
+  const { currentTheme } = useContext(ThemeContext);
+
   const handleClick = () => {
     if (!disabled) handleChoice(card);
   };
@@ -11,7 +14,7 @@ export default function MemoryCard({ card, handleChoice, flipped, disabled }) {
 
       <img
         className="CardReverse"
-        src={CardBack}
+        src={require(`../Assets/CardFaces/${currentTheme.cardBack}`)}
         alt="Memory Card Reverse"
         onClick={handleClick}
       />

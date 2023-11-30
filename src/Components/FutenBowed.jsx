@@ -5,10 +5,10 @@ import { useContext } from "react";
 import GameContext from "../Context/GameContext";
 
 export default function FutenBowed() {
-  const { setOmCount } = useContext(GameContext);
+  const { stats, setStats } = useContext(GameContext);
   const handleClick = () => {
     playOM();
-    setOmCount((prev) => prev + 1);
+    setStats({ ...stats, omCount: stats.omCount + 1 });
     console.log("Futen Has Been Pressed");
   };
 

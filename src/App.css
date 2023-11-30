@@ -1,14 +1,25 @@
 Body {
   background: #333;
-  padding: 0px;
-  height: 100vh;
-  width: 100%;
   overflow: hidden;
+  height: 100dvh;
 }
 
+/* TODO: This is not the right way to deal with chakra UI "rings"*/
 button:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+/*TODO: for some reason the background color and hover don't work in style sheet??*/
+.WarningModalButton {
+  background-color: brown;
+  border: 2px solid gold;
+  outline: 2px solid black;
+  text-shadow: 0px 0px 2px gold;
+  transition: all 0.3s ease-in-out;
+}
+.WarningModalButton:hover {
+  background-color: gold;
+  border: 2px solid brown;
 }
 
 .Stats ul {
@@ -21,38 +32,41 @@ button:focus {
   line-height: 1em;
 }
 
+.OverlayImage {
+  z-index: 2;
+}
+
+/* TODO: improve responsive design. This removes the drummer and monk on mobile size, so it's roughly playable.*/
+@media screen and (max-width: 800px) {
+  .OverlayImage {
+    display: none;
+  }
+}
+
 .MemoryGameLayout {
   margin-top: 1em;
-  display: flex;
   position: absolute;
-  /* align-content: space-around; */
-  justify-content: center;
-  /* display: grid; */
-  /* height: 100%; */
 }
 
-.MemoryGameLeft {
-  margin: 2vw;
-  margin-top: 0vh;
-  /* align-content: space-around; */
-  display: grid;
-  height: 95%; /* smaller left side due to larger Noh_drummer image at bottom*/
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px 50px;
-}
-
+.MemoryGameLeft,
 .MemoryGameRight {
   margin: 2vw;
   margin-top: 0vh;
+  margin-bottom: 2vh;
   display: grid;
-  height: 100%;
+  /* height: 100%; */
   grid-template-columns: repeat(2, 1fr);
-  gap: 30px 50px;
+  gap: 2vh 2vw;
+}
+
+.MemoryGameLeft {
+  gap: 1vh 2vw; /* smaller left side due to larger Noh_drummer image at bottom */
 }
 
 .GameCard {
   position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 .GameCard .CardReverse {

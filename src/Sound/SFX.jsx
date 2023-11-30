@@ -6,6 +6,7 @@ import lock from "../Sound/Effects/jagadamba__door-lock-click.mp3";
 import tamborine from "../Sound/Effects/jagadamba__tambourine-1.mp3";
 import hauntingDrums from "../Sound/Effects/HauntingDrums0.01.mp3";
 import cleansingBell from "../Sound/Effects/ganapataye__04_bells.mp3";
+import gongs1 from "../Sound/Effects/10gongs.mp3";
 
 export function playOM() {
   const omSFX = new Howl({
@@ -46,5 +47,19 @@ export const hauntingDrumsSFX = new Howl({
   rate: 1,
   onend: function () {
     Howler.volume(1);
+  },
+});
+
+//Gong SFX is a bit Fubar TODO : check sound pool size, fix volume FUBAR.
+export const gongs1SFX = new Howl({
+  src: [gongs1],
+  volume: 0.4,
+  rate: 1,
+  onplay: function () {
+    setTimeout(() => gongs1SFX.fade(gongs1SFX.volume(), 0, 3000), 2000);
+  },
+  onfade: function () {
+    gongs1SFX.stop();
+    gongs1SFX.volume(0.4);
   },
 });

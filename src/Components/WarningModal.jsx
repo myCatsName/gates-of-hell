@@ -1,4 +1,6 @@
-import "../App.css";
+import { useContext } from "react";
+import GameContext from "../Context/GameContext";
+
 //dom
 import { useNavigate } from "react-router-dom";
 //ui
@@ -16,11 +18,10 @@ import {
 //assets
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import sanjo_palace from "../Assets/sanjo_palace_burning.jpg";
-// import alt_red_swatch from "../Assets/Swatches/alt_red_swatch.png";
-// import sanjo_palace2 from "../Assets/SanjoPalace2.jpg";
 
 export default function WarningModal() {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
+  const { setAllowJumps } = useContext(GameContext);
   // const navigate = useNavigate();
 
   // const handleClick = () => {
@@ -29,6 +30,7 @@ export default function WarningModal() {
   //   console.log("title screen modal closed, nav to main layout");
   // };
 
+  //TODO: why do button backgrounds not work in css file??
   return (
     <Modal size="lg" isOpen={isOpen} onClose={() => {}} isCentered>
       <ModalOverlay
@@ -57,24 +59,24 @@ export default function WarningModal() {
           </ModalBody>
           <ModalFooter justifyContent={"center"} gap={"10px"}>
             <Button
-              onClick={onClose}
+              onClick={() => {
+                setAllowJumps(true);
+                onClose();
+              }}
+              className="WarningModalButton"
               backgroundColor={"brown"}
-              border={"2px solid gold"}
-              outline={"2px solid black"}
-              textShadow={"0px 0px 2px gold"}
               _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
-              transition="all 0.3s ease-in-out"
             >
               I'm Ready for Hell!
             </Button>
             <Button
-              onClick={onClose}
+              onClick={() => {
+                setAllowJumps(false);
+                onClose();
+              }}
+              className="WarningModalButton"
               backgroundColor={"brown"}
-              border={"2px solid gold"}
-              outline={"2px solid black"}
-              textShadow={"0px 0px 2px gold"}
               _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
-              transition="all 0.3s ease-in-out"
             >
               Play Without Jump Scares
             </Button>

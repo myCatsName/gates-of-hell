@@ -1,34 +1,26 @@
-// Might display in Header section
-// Should use localStorage to track history
-/* Should display 
-    - OMs
-    - Cycles cleared
-    - Perfect clears (Clear the board without triggering Sting card in Hell mode)
-    - Fudo Summoned (Number of Stings)
-*/
-
 import { Box } from "@chakra-ui/core";
 import GameContext from "../Context/GameContext";
 import { useContext } from "react";
 
 export default function StatsPanel() {
-  const { omCount, cycleCount, perfectCycles } = useContext(GameContext);
+  const { stats } = useContext(GameContext);
 
   return (
     <Box
       className="Stats"
       style={{
-        fontSize: "small",
+        fontSize: "large",
         color: "black",
         textAlign: "left",
         position: "absolute",
         bottom: "0px",
+        fontFamily: "Slackside One",
       }}
     >
       <ul style={{ listStyle: "none" }}>
-        <li>OMs : {omCount}</li>
-        <li>Perfect Cycles : {perfectCycles}</li>
-        <li>Cycles Cleared : {cycleCount}</li>
+        <li>OMs : {stats.omCount}</li>
+        <li>Perfect Cycles : {stats.perfectCycles}</li>
+        <li>Cycles Cleared : {stats.cycleCount}</li>
       </ul>
     </Box>
   );

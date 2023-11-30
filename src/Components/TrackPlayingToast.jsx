@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import greenSwatch from "../Assets/Swatches/greenSquaresSwatch.png";
+import greenSwatch from "../Assets/Swatches/newGreenSwatch.png";
 
 export default function TrackSelectedToast({ trackname }) {
   return (

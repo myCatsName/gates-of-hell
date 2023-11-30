@@ -1,21 +1,29 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
-  const [omCount, setOmCount] = useState(0);
-  const [cycleCount, setCycleCount] = useState(0);
-  const [perfectCycles, setPerfectCycles] = useState(0);
+  const [allowJumps, setAllowJumps] = useState(false);
+  const [stats, setStats] = useState(
+    JSON.parse(localStorage.getItem("stats")) || {
+      omCount: 0,
+      cycleCount: 0,
+      perfectCycles: 0,
+      stings: 0,
+    }
+  );
+
+  useEffect(() => {
+    localStorage.setItem("stats", JSON.stringify(stats));
+  }, [stats]);
 
   return (
     <GameContext.Provider
       value={{
-        omCount,
-        setOmCount,
-        cycleCount,
-        setCycleCount,
-        perfectCycles,
-        setPerfectCycles,
+        stats,
+        setStats,
+        allowJumps,
+        setAllowJumps,
       }}
     >
       {children}

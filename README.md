@@ -4,7 +4,7 @@ A Buddhist Horror matching game prototyped Oct 23-30, 2023
 
 ## Made With
 
-# JS, React, Chakra UI, BeatBox.co, Howler.js
+# JS, React, Chakra UI, BeepBox.co, Howler.js
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

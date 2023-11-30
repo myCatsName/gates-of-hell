@@ -9,6 +9,7 @@ import {
   playTendaiTensionMusic,
   playSlightBackgroundMusic,
   playGomaDoMusic,
+  playMeditationCushion,
   // SlightBackgroundMusic,
   // TendaiTensionMusic,
   // GomaDoMusic,
@@ -17,6 +18,7 @@ import {
 const backgroundAudioTrack = [
   playSlightBackgroundMusic,
   playTendaiTensionMusic,
+  playMeditationCushion,
   playGomaDoMusic,
 ];
 
@@ -25,6 +27,7 @@ const backgroundAudioTrack = [
 const backgroundAudio = [
   `"Sanjo Palace Burning"`,
   `"Tendai Tension"`,
+  `"Meditation Cushion"`,
   `"GomaDo Theme"`,
 ];
 
