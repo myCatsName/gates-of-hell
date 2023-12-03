@@ -42,6 +42,11 @@ button:focus {
     display: none;
   }
 }
+@media screen and (max-height: 800px) {
+  .OverlayImage {
+    display: none;
+  }
+}
 
 .MemoryGameLayout {
   margin-top: 1em;

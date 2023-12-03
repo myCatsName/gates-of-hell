@@ -19,9 +19,16 @@ import {
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import sanjo_palace from "../Assets/sanjo_palace_burning.jpg";
 
+//SFX
+import { doubleTambourineSFX } from "../Sound/SFX";
+
+const gameStartSFX = doubleTambourineSFX;
+
 export default function WarningModal() {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
   const { setAllowJumps } = useContext(GameContext);
+
+  //TODO:
   // const navigate = useNavigate();
 
   // const handleClick = () => {
@@ -61,6 +68,7 @@ export default function WarningModal() {
             <Button
               onClick={() => {
                 setAllowJumps(true);
+                gameStartSFX.play();
                 onClose();
               }}
               className="WarningModalButton"
@@ -72,6 +80,7 @@ export default function WarningModal() {
             <Button
               onClick={() => {
                 setAllowJumps(false);
+                gameStartSFX.play();
                 onClose();
               }}
               className="WarningModalButton"

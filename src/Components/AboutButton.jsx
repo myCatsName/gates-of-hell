@@ -2,7 +2,6 @@ import {
   Button,
   Modal,
   ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
@@ -14,12 +13,23 @@ import {
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import FooterButton from "./FooterButton";
 
+import { cleansingBellSFX, slapSFX } from "../Sound/SFX";
+const sfxOnClick = cleansingBellSFX;
+const sfxOnClose = slapSFX;
+
 export default function AboutButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <FooterButton onClick={onOpen}>About</FooterButton>
+      <FooterButton
+        onClick={() => {
+          onOpen();
+          sfxOnClick.play();
+        }}
+      >
+        About
+      </FooterButton>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
         <ModalOverlay />
@@ -44,14 +54,17 @@ export default function AboutButton() {
               <br />
               Art from Wikipedia
               <br />
-              "OM" by "Jagadamba" and "Freesound.org"
+              "OM" and other sound effects by "Freesound.org" and "Jagadamba"
               <br />
               "Tubo" icon made with Bing AI, and copyright myCatsName
             </Text>
           </ModalBody>
           <ModalFooter justifyContent="center">
             <Button
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                sfxOnClose.play();
+              }}
               backgroundColor={"brown"}
               border={"2px solid gold"}
               textShadow={"0px 0px 2px gold"}

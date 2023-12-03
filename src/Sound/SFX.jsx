@@ -7,6 +7,8 @@ import tamborine from "../Sound/Effects/jagadamba__tambourine-1.mp3";
 import hauntingDrums from "../Sound/Effects/HauntingDrums0.01.mp3";
 import cleansingBell from "../Sound/Effects/ganapataye__04_bells.mp3";
 import gongs1 from "../Sound/Effects/10gongs.mp3";
+import coinDrop from "../Sound/Effects/CoinDrop.wav";
+import doubleTambourine from "../Sound/Effects/doubleTambourine.mp3";
 
 export function playOM() {
   const omSFX = new Howl({
@@ -36,6 +38,18 @@ export const cleansingBellSFX = new Howl({
   src: [cleansingBell],
   volume: 4,
   rate: 0.85,
+});
+
+export const coinDropSFX = new Howl({
+  src: [coinDrop],
+  volume: 0.8,
+  rate: 3,
+});
+
+export const doubleTambourineSFX = new Howl({
+  src: [doubleTambourine],
+  volume: 0.7,
+  rate: 0.5,
 });
 
 /* the volume of music is dropped by half when HAUNTINGDRUMSSFX plays as the "win" theme,

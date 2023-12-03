@@ -15,6 +15,9 @@ import {
   // GomaDoMusic,
 } from "../Sound/BGMusic";
 
+import { slapSFX } from "../Sound/SFX";
+const sfxOnClick = slapSFX;
+
 const backgroundAudioTrack = [
   playSlightBackgroundMusic,
   playTendaiTensionMusic,
@@ -37,6 +40,7 @@ export default function TrackSelector() {
   const handleClick = () => {
     // backgroundAudio.forEach((track) => track.stop);
     Howler.stop();
+    sfxOnClick.play();
     setCurrentBGAudio((currentBGAudio + 1) % backgroundAudioTrack.length);
     console.log(`Now playing ${backgroundAudio[currentBGAudio]}`);
     toast({

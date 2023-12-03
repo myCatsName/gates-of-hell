@@ -44,7 +44,11 @@ export default function FolkLoreDrawer() {
           <DrawerBody>
             <Center>Coming Soon</Center>
           </DrawerBody>
-          <DrawerFooter></DrawerFooter>
+          <Center>
+            <DrawerFooter>
+              <FooterButton onClick={onClose}>Close</FooterButton>
+            </DrawerFooter>
+          </Center>
         </DrawerContent>
       </Drawer>
     </>

@@ -15,12 +15,7 @@ import TitleScreen from "./Layouts/TitleScreen";
 import { MemoryGame } from "./Components/MemoryGame";
 
 // Audio
-// should be broken out and handled in a different way
-import {
-  playTendaiTensionMusic,
-  playSlightBackgroundMusic,
-  playGomaDoMusic,
-} from "./Sound/BGMusic";
+import { playSlightBackgroundMusic } from "./Sound/BGMusic";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,12 +28,11 @@ const router = createBrowserRouter(
 
 function App() {
   playSlightBackgroundMusic(); //Night Attack on Sanjo Palace theme
-  // playTendaiTensionMusic(); //Tendai Tension theme
-  // playGomaDoMusic();
+
   return (
     <React.Fragment>
-      <RouterProvider router={router} />
       <TitleScreen />
+      <RouterProvider router={router} />
     </React.Fragment>
   );
 }
