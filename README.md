@@ -2,11 +2,13 @@
 
 A Buddhist Horror matching game prototyped Oct 23-30, 2023
 
+Live Demo: https://mycatsname.github.io/gates-of-hell/
+
 ## Made With
 
 # JS, React, Chakra UI, BeepBox.co, Howler.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Made with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -28,10 +30,6 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run deploy`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Build and deploy to the live page.
