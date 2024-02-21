@@ -28,14 +28,17 @@ export default function WarningModal() {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
   const { setAllowJumps } = useContext(GameContext);
 
-  //TODO:
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const handleClick = () => {
-  //   navigate("Root");
-  //   onClose();
-  //   console.log("title screen modal closed, nav to main layout");
-  // };
+  const handleClick = (preference) => {
+    setAllowJumps(preference);
+    gameStartSFX.play();
+    navigate("main");
+    console.log(
+      "Jumps: " + preference,
+      "\n Title screen modal nav to main layout"
+    );
+  };
 
   //TODO: why do button backgrounds not work in css file??
   return (
@@ -66,11 +69,7 @@ export default function WarningModal() {
           </ModalBody>
           <ModalFooter justifyContent={"center"} gap={"10px"}>
             <Button
-              onClick={() => {
-                setAllowJumps(true);
-                gameStartSFX.play();
-                onClose();
-              }}
+              onClick={() => handleClick(true)}
               className="WarningModalButton"
               backgroundColor={"brown"}
               _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
@@ -78,11 +77,7 @@ export default function WarningModal() {
               I'm Ready for Hell!
             </Button>
             <Button
-              onClick={() => {
-                setAllowJumps(false);
-                gameStartSFX.play();
-                onClose();
-              }}
+              onClick={() => handleClick(false)}
               className="WarningModalButton"
               backgroundColor={"brown"}
               _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
