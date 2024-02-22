@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/react";
-import Futen_Bowed from "../Assets/Futen_bowed_trans.png";
+import Futen_Bowed from "../Assets/Futen_bowed_trans.webp";
 import { playOM } from "../Sound/SFX";
 import { useContext } from "react";
 import GameContext from "../Context/GameContext";

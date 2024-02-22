@@ -10,13 +10,13 @@ import { MemoryGame } from "../Components/MemoryGame";
 import StatsPanel from "../Components/StatsPanel";
 
 //assets
-import AltarImage from "../Assets/Acala_at_Buddha_Tooth_Relic_Temple_Redder.JPG";
-import headerLinen from "../Assets/Swatches/possible_header_background.png";
+import AltarImage from "../Assets/Acala_at_Buddha_Tooth_Relic_Temple_Redder.webp";
+import headerLinen from "../Assets/Swatches/possible_header_background.webp";
 import linen from "../Assets/Swatches/lightToDarkLinen.png";
 
 import redSwatch from "../Assets/Swatches/background_swatch.png";
-import greenSwatch from "../Assets/Swatches/newGreenSwatch.png";
-import bloodyeyes from "../Assets/Swatches/bloodyeyes.png";
+import greenSwatch from "../Assets/Swatches/newGreenSwatch.webp";
+import bloodyeyes from "../Assets/Swatches/bloodyeyes.webp";
 
 const imagesArray = [bloodyeyes, greenSwatch, redSwatch];
 
@@ -35,6 +35,7 @@ export default function RootLayout() {
 
   return (
     <Grid
+      background={"#565656"}
       templateColumns="repeat(12, 1fr)"
       templateRows="repeat(4,1fr) 1fr minmax(10vh, 20fr)" // (6,1fr) // 3.5em" //footer high enough for text
     >
