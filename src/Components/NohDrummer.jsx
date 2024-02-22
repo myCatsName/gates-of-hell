@@ -1,5 +1,5 @@
 import { Image } from "@chakra-ui/react";
-import Noh_drummer from "../Assets/YoungManPlayingaNohDrum4.png";
+import Noh_drummer from "../Assets/YoungManPlayingaNohDrum4.webp";
 import { playOM } from "../Sound/SFX";
 import { useContext } from "react";
 import GameContext from "../Context/GameContext";

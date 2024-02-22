@@ -5,12 +5,12 @@ import GameContext from "../Context/GameContext";
 import JumpDrawer from "./JumpDrawer";
 
 // TODO: Assets should be separated, feed deck to MemoryGame as prop
-import Achala from "../Assets/CardFaces/Arya_Achala.jpg";
-import dazu_baoding_shan from "../Assets/CardFaces/dazu_baoding.png";
+import Achala from "../Assets/CardFaces/Arya_Achala.webp";
+import dazu_baoding_shan from "../Assets/CardFaces/dazu_baoding.webp";
 import Gaki1 from "../Assets/CardFaces/Gaki1.jpg";
-import hungryghost from "../Assets/CardFaces/hungryghost.png";
+import hungryghost from "../Assets/CardFaces/hungryghost.webp";
 import ghoul from "../Assets/CardFaces/Oiwa_Quai_Branly_painting_.jpg";
-import oxHead from "../Assets/CardFaces/oxhead2.png";
+import oxHead from "../Assets/CardFaces/oxhead2.webp";
 // import fujin_face from "../Assets/CardFaces/fujin_face.png";
 // import riverVictim from "../Assets/CardFaces/riverofBlood.png";
 // import tortureVictom from "../Assets/CardFaces/torture.png";

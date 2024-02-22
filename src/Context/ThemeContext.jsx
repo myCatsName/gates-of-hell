@@ -6,15 +6,15 @@ const ThemeContext = createContext();
 const THEMES = {
   DEFAULT: {
     background: "background_swatch.png",
-    cardBack: "PlayingCardReverse.png",
+    cardBack: "PlayingCardReverse.webp",
   },
   CHILL: {
     background: "newGreenSwatch.png", //For some dumb reason greenSquaresSwatch.png stopped working :/
-    cardBack: "EmbossedFlowerCard.png",
+    cardBack: "EmbossedFlowerCard.webp",
   },
   SPOOKY: {
-    background: "bloodyeyes.png",
-    cardBack: "ScrollCard2.jpg",
+    background: "bloodyeyes.webp",
+    cardBack: "ScrollCard2.webp",
   },
 };
 

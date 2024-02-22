@@ -3,23 +3,18 @@
   "name": "Fudō Myōō at the Gate of Hell",
   "icons": [
     {
-      "src": "Fudo_Icon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "Fudo_Icon.webp",
+      "type": "image/webp",
+      "sizes": "any"
     },
     {
       "src": "Fudo_Icon.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "Fudo_Icon.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "any"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#565656",
+  "background_color": "#565656"
 }

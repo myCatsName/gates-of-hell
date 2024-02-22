@@ -12,7 +12,7 @@ import {
 import FooterButton from "./FooterButton";
 
 //Backgrounds
-import shadowedBackground from "../Assets/Swatches/shadowedBackground.png";
+import shadowedBackground from "../Assets/Swatches/shadowedBackground.webp";
 
 const backgroundOptions = [shadowedBackground];
 const backgroundToUse = 0;

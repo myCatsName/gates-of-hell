@@ -1,15 +1,15 @@
 import { Drawer, DrawerContent } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
-import Fudo_Icon from "../Assets/Fudo_icon.png";
-import Tubo_Icon from "../Assets/TuboIconTrans.png";
-import Bing1 from "../Assets/Jumps/bing1.jpg";
-import Bing2 from "../Assets/Jumps/bing2.jpg";
-import Bing3 from "../Assets/Jumps/bing3.jpg";
-import Bing4 from "../Assets/Jumps/bing4.jpg";
-import Bing5 from "../Assets/Jumps/bing5.jpg";
-import Bing6 from "../Assets/Jumps/bing6.jpg";
-import Horsehead from "../Assets/Jumps/horsehead.jpg";
+import Fudo_Icon from "../Assets/Fudo_icon.webp";
+import Tubo_Icon from "../Assets/TuboIconTrans.webp";
+import Bing1 from "../Assets/Jumps/bing1.webp";
+import Bing2 from "../Assets/Jumps/bing2.webp";
+import Bing3 from "../Assets/Jumps/bing3.webp";
+import Bing4 from "../Assets/Jumps/bing4.webp";
+import Bing5 from "../Assets/Jumps/bing5.webp";
+import Bing6 from "../Assets/Jumps/bing6.webp";
+import Horsehead from "../Assets/Jumps/horsehead.webp";
 
 const jumpImage = [
   Fudo_Icon,
@@ -55,6 +55,7 @@ export default function JumpDrawer({ isOpen, onClose }) {
           backgroundRepeat={"no-repeat"}
           bgSize={"contain"}
           backgroundPosition={"center"}
+          boxShadow={"none"}
         />
       </Drawer>
     </>

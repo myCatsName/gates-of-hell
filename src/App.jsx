@@ -12,15 +12,15 @@ import {
 // Pages
 import RootLayout from "./Layouts/RootLayout";
 import TitleScreen from "./Layouts/TitleScreen";
-import { MemoryGame } from "./Components/MemoryGame";
 
 // Audio
 import { playSlightBackgroundMusic } from "./Sound/BGMusic";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route path="matching-game" element={<MemoryGame />} />
+    <Route>
+      <Route path="/" element={<TitleScreen />} />
+      <Route path="main" element={<RootLayout />} />
       <Route path="*" element={<></>} />
     </Route>
   )
@@ -29,12 +29,7 @@ const router = createBrowserRouter(
 function App() {
   playSlightBackgroundMusic(); //Night Attack on Sanjo Palace theme
 
-  return (
-    <React.Fragment>
-      <TitleScreen />
-      <RouterProvider router={router} />
-    </React.Fragment>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
