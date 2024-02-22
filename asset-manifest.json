@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gates-of-hell/static/css/main.91125906.css",
-    "main.js": "/gates-of-hell/static/js/main.9863b312.js",
+    "main.js": "/gates-of-hell/static/js/main.2eb1cc49.js",
     "static/media/PlayingCardReverse.png": "/gates-of-hell/static/media/PlayingCardReverse.29af7148db628e97ce20.png",
     "static/media/hungryghost.png": "/gates-of-hell/static/media/hungryghost.ea6f2ed6df3b875cf6a4.png",
     "static/media/fujin_face.png": "/gates-of-hell/static/media/fujin_face.d132317e6539cbaaf676.png",
@@ -67,10 +67,10 @@
     "static/media/newGreenSwatch.webp": "/gates-of-hell/static/media/newGreenSwatch.69f82d2ddec647d26dbf.webp",
     "index.html": "/gates-of-hell/index.html",
     "main.91125906.css.map": "/gates-of-hell/static/css/main.91125906.css.map",
-    "main.9863b312.js.map": "/gates-of-hell/static/js/main.9863b312.js.map"
+    "main.2eb1cc49.js.map": "/gates-of-hell/static/js/main.2eb1cc49.js.map"
   },
   "entrypoints": [
     "static/css/main.91125906.css",
-    "static/js/main.9863b312.js"
+    "static/js/main.2eb1cc49.js"
   ]
 }
