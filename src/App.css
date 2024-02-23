@@ -2,9 +2,10 @@ Body {
   background: #333;
   overflow: hidden;
   height: 100dvh;
+  width: 100%;
 }
 
-/* TODO: This is not the right way to deal with chakra UI "rings"*/
+/*This is one way to deal with chakra UI "rings"*/
 button:focus {
   outline: none !important;
   box-shadow: none !important;
@@ -37,12 +38,7 @@ button:focus {
 }
 
 /* TODO: improve responsive design. This removes the drummer and monk on mobile size, so it's roughly playable.*/
-@media screen and (max-width: 800px) {
-  .OverlayImage {
-    display: none;
-  }
-}
-@media screen and (max-height: 800px) {
+@media screen and (max-width: 719px), screen and (max-height: 719px) {
   .OverlayImage {
     display: none;
   }
