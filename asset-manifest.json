@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gates-of-hell/static/css/main.91125906.css",
-    "main.js": "/gates-of-hell/static/js/main.2eb1cc49.js",
+    "main.js": "/gates-of-hell/static/js/main.ea0e71ee.js",
     "static/media/PlayingCardReverse.png": "/gates-of-hell/static/media/PlayingCardReverse.29af7148db628e97ce20.png",
     "static/media/hungryghost.png": "/gates-of-hell/static/media/hungryghost.ea6f2ed6df3b875cf6a4.png",
     "static/media/fujin_face.png": "/gates-of-hell/static/media/fujin_face.d132317e6539cbaaf676.png",
@@ -9,7 +9,6 @@
     "static/media/GomaDo.mp3": "/gates-of-hell/static/media/GomaDo.9df66fa9122fec6e3816.mp3",
     "static/media/ScrollOriginal.jpg": "/gates-of-hell/static/media/ScrollOriginal.fc0ab68e5a4b3d3e38c5.jpg",
     "static/media/EmbossedFlowerCard.png": "/gates-of-hell/static/media/EmbossedFlowerCard.7c99638077497a7f1320.png",
-    "static/media/oxhead.png": "/gates-of-hell/static/media/oxhead.c8122943eb3c99e41db7.png",
     "static/media/oxhead2.png": "/gates-of-hell/static/media/oxhead2.bf5646373ff8c4063d39.png",
     "static/media/SlightBackground3.mp3": "/gates-of-hell/static/media/SlightBackground3.78166ecf8363b3377eb0.mp3",
     "static/media/SlightBackground4.mp3": "/gates-of-hell/static/media/SlightBackground4.3e1328a170b8efb293a0.mp3",
@@ -21,7 +20,6 @@
     "static/media/SlightBackground.mp3": "/gates-of-hell/static/media/SlightBackground.e2db45933a440be2bac6.mp3",
     "static/media/SlightBackground2.mp3": "/gates-of-hell/static/media/SlightBackground2.53002aec8dddbce3bb60.mp3",
     "static/media/dazu_baoding.png": "/gates-of-hell/static/media/dazu_baoding.a922bac4b9b5e35a06f8.png",
-    "static/media/ScrollCard1.jpg": "/gates-of-hell/static/media/ScrollCard1.3ed861452f6b70000604.jpg",
     "static/media/ScrollCard2.jpg": "/gates-of-hell/static/media/ScrollCard2.f24b4678565462b60b76.jpg",
     "static/media/TendaiTension1.mp3": "/gates-of-hell/static/media/TendaiTension1.59da0d8677db0351b48e.mp3",
     "static/media/TendaiTension2.mp3": "/gates-of-hell/static/media/TendaiTension2.1e3181698f876a3ffebb.mp3",
@@ -67,10 +65,10 @@
     "static/media/newGreenSwatch.webp": "/gates-of-hell/static/media/newGreenSwatch.69f82d2ddec647d26dbf.webp",
     "index.html": "/gates-of-hell/index.html",
     "main.91125906.css.map": "/gates-of-hell/static/css/main.91125906.css.map",
-    "main.2eb1cc49.js.map": "/gates-of-hell/static/js/main.2eb1cc49.js.map"
+    "main.ea0e71ee.js.map": "/gates-of-hell/static/js/main.ea0e71ee.js.map"
   },
   "entrypoints": [
     "static/css/main.91125906.css",
-    "static/js/main.2eb1cc49.js"
+    "static/js/main.ea0e71ee.js"
   ]
 }
