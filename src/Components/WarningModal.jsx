@@ -33,7 +33,8 @@ export default function WarningModal() {
   const handleClick = (preference) => {
     setAllowJumps(preference);
     gameStartSFX.play();
-    navigate("main");
+    //Check if in iFrame (itch.io)
+    window.self === window.top ? navigate("main") : onClose();
     console.log(
       "Jumps: " + preference,
       "\n Title screen modal nav to main layout"

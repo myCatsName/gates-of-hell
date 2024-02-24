@@ -12,6 +12,7 @@ import {
 
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import FooterButton from "./FooterButton";
+import { VERSION } from "../VERSION";
 
 import { cleansingBellSFX, slapSFX } from "../Sound/SFX";
 const sfxOnClick = cleansingBellSFX;
@@ -56,7 +57,9 @@ export default function AboutButton() {
               <br />
               "OM" and other sound effects by "Freesound.org" and "Jagadamba"
               <br />
-              "Tubo" icon made with Bing AI, and copyright myCatsName
+              "Tubo" icon made with Bing AI.
+              <br />
+              V.{VERSION}
             </Text>
           </ModalBody>
           <ModalFooter justifyContent="center">
