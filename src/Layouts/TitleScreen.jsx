@@ -1,5 +1,3 @@
-import "../App.css";
-
 //ui
 import WarningModal from "../Components/WarningModal";
 
