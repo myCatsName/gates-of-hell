@@ -10,17 +10,55 @@ button:focus {
   outline: none !important;
   box-shadow: none !important;
 }
-/*TODO: for some reason the background color and hover don't work in style sheet??*/
-.WarningModalButton {
+
+button {
+  filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
+  &:active {
+    transform: translateY(3px);
+  }
+}
+/*double class selector to raise specificity above ChakraUI */
+.WarningModalButton.WarningModalButton {
   background-color: brown;
   border: 2px solid gold;
   outline: 2px solid black;
   text-shadow: 0px 0px 2px gold;
   transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: gold;
+    border: 2px solid brown;
+    scale: 1.05;
+    z-index: 3;
+  }
 }
-.WarningModalButton:hover {
-  background-color: gold;
-  border: 2px solid brown;
+
+/*TODO: background properties are not performant to animate,
+maybe use an image element with transform */
+/*TODO: background image always fills the screen, but not
+always animating on some resolution sizes.*/
+
+/*targets the entry background-image*/
+@media (prefers-reduced-motion: no-preference) {
+  .chakra-modal__overlay {
+    animation: entryBackground 12s alternate infinite;
+    background-position: 0 0;
+    background-size: 1.1;
+  }
+
+  /*targets the red modal background
+  but makes me a bit dizzy if both this and the background are running*/
+  .entryModal {
+    /* animation: entryBackground 30s linear infinite running; */
+    background-position: 0 0;
+  }
+  @keyframes entryBackground {
+    100% {
+      /* target the red modal background and loop
+    smoothly with x,y values -40.5% 31% */
+      background-position: 0 31%;
+    }
+  }
 }
 
 .Stats ul {
@@ -35,6 +73,7 @@ button:focus {
 
 .OverlayImage {
   z-index: 2;
+  filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
 }
 
 /* TODO: improve responsive design. This removes the drummer and monk on mobile size, so it's roughly playable.*/
@@ -53,7 +92,7 @@ button:focus {
 .MemoryGameRight {
   margin: 2vw;
   margin-top: 0vh;
-  margin-bottom: 2vh;
+  /* margin-bottom: 2vh; */
   display: grid;
   /* height: 100%; */
   grid-template-columns: repeat(2, 1fr);
@@ -68,6 +107,7 @@ button:focus {
   position: relative;
   width: 100%;
   z-index: 1;
+  filter: drop-shadow(0 0 1rem rgba(14, 13, 13, 0.8));
 }
 
 .GameCard .CardReverse {
@@ -99,23 +139,4 @@ button:focus {
 .flipped .CardFront {
   transform: rotatey(0deg);
   transition-delay: 0.15s;
-}
-
-.Folklore {
-  /* background-image: url('./Assets/UI/brown_UI_Box.png'); */
-  background-size: "100% 100%";
-  border: "3px solid black";
-  box-shadow: "0px 2px 2px brown";
-  color: goldenrod;
-  width: "10vw";
-  height: "5vh";
-  position: "relative";
-  top: "-2vh";
-  transition: "border 0.3s ease-in-out";
-  /* _hover: {{
-  background-image: url('./Assets/UI/brown_UI_Box.png'),
-  border: "2px solid gold" }};
-  _active:{{
-      background-image: url('./Assets/UI/brown_UI_Box.png'),
-      border: "2px solid gold" }}; */
 }
