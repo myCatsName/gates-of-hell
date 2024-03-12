@@ -45,16 +45,19 @@ export default function WarningModal() {
   return (
     <Modal size="lg" isOpen={isOpen} onClose={() => {}} isCentered>
       <ModalOverlay
+        className="entryBackground"
         backgroundImage={sanjo_palace}
         backgroundRepeat={"no-repeat"}
         bgSize={"cover"}
       >
         <ModalContent
+          className="entryModal"
           textAlign={"center"}
           backgroundImage={very_dark_swatch}
           color={"green.400"}
           border={"3px solid black"}
           textShadow={"2px 2px 5px black"}
+          filter={`drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8))`}
         >
           <ModalHeader textDecor={"underline"}>
             <h1>WARNING</h1>
@@ -72,16 +75,12 @@ export default function WarningModal() {
             <Button
               onClick={() => handleClick(true)}
               className="WarningModalButton"
-              backgroundColor={"brown"}
-              _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
             >
               I'm Ready for Hell!
             </Button>
             <Button
               onClick={() => handleClick(false)}
               className="WarningModalButton"
-              backgroundColor={"brown"}
-              _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
             >
               Play Without Jump Scares
             </Button>

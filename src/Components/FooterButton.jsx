@@ -19,11 +19,12 @@ export default function FooterButton({ children, onClick }) {
       _active={{
         backgroundImage: { brownUIBox },
         border: "2px solid gold",
+        transform: `translateY(3px)`,
       }}
       transition="border 0.3s ease-in-out"
       onClick={onClick}
     >
-      <span style={{ color: "gold", fontFamily: "" }}>{children}</span>
+      <span style={{ color: "gold", fontFamily: " " }}>{children}</span>
     </Button>
   );
 }
