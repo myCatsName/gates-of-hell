@@ -7,25 +7,20 @@ import TrackSelectedToast from "./TrackPlayingToast";
 //Audio track names
 import {
   playTendaiTensionMusic,
-  playSlightBackgroundMusic,
+  playSanjoPalaceMusic,
   playGomaDoMusic,
   playMeditationCushion,
-  // SlightBackgroundMusic,
-  // TendaiTensionMusic,
-  // GomaDoMusic,
 } from "../Sound/BGMusic";
 
-import { slapSFX } from "../Sound/SFX";
-const sfxOnClick = slapSFX;
+import { playSlapSFX } from "../Sound/SFX";
+const sfxOnClick = playSlapSFX;
 
 const backgroundAudioTrack = [
-  playSlightBackgroundMusic,
+  playSanjoPalaceMusic,
   playTendaiTensionMusic,
   playMeditationCushion,
   playGomaDoMusic,
 ];
-
-// The audio really needs to be re-done to allow fx and bg to control separate
 
 const backgroundAudio = [
   `"Sanjo Palace Burning"`,
@@ -38,9 +33,8 @@ export default function TrackSelector() {
   const [currentBGAudio, setCurrentBGAudio] = useState(1);
   const toast = useToast();
   const handleClick = () => {
-    // backgroundAudio.forEach((track) => track.stop);
     Howler.stop();
-    sfxOnClick.play();
+    sfxOnClick();
     setCurrentBGAudio((currentBGAudio + 1) % backgroundAudioTrack.length);
     console.log(`Now playing ${backgroundAudio[currentBGAudio]}`);
     toast({

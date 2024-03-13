@@ -20,9 +20,9 @@ import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import sanjo_palace from "../Assets/sanjo_palace_burning.jpg";
 
 //SFX
-import { doubleTambourineSFX } from "../Sound/SFX";
+import { playDoubleTamborineSFX } from "../Sound/SFX";
 
-const gameStartSFX = doubleTambourineSFX;
+const gameStartSFX = playDoubleTamborineSFX;
 
 export default function WarningModal() {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
@@ -32,7 +32,7 @@ export default function WarningModal() {
 
   const handleClick = (preference) => {
     setAllowJumps(preference);
-    gameStartSFX.play();
+    gameStartSFX();
     //Check if in iFrame (itch.io)
     window.self === window.top ? navigate("main") : onClose();
     console.log(
@@ -41,7 +41,6 @@ export default function WarningModal() {
     );
   };
 
-  //TODO: why do button backgrounds not work in css file??
   return (
     <Modal size="lg" isOpen={isOpen} onClose={() => {}} isCentered>
       <ModalOverlay

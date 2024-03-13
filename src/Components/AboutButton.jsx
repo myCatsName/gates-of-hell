@@ -14,9 +14,9 @@ import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import FooterButton from "./FooterButton";
 import { VERSION } from "../VERSION";
 
-import { cleansingBellSFX, slapSFX } from "../Sound/SFX";
-const sfxOnClick = cleansingBellSFX;
-const sfxOnClose = slapSFX;
+import { playCleansingBellSFX, playSlapSFX } from "../Sound/SFX";
+const sfxOnClick = playCleansingBellSFX;
+const sfxOnClose = playSlapSFX;
 
 export default function AboutButton() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +26,7 @@ export default function AboutButton() {
       <FooterButton
         onClick={() => {
           onOpen();
-          sfxOnClick.play();
+          sfxOnClick();
         }}
       >
         About
@@ -66,7 +66,7 @@ export default function AboutButton() {
             <Button
               onClick={() => {
                 onClose();
-                sfxOnClose.play();
+                sfxOnClose();
               }}
               backgroundColor={"brown"}
               border={"2px solid gold"}

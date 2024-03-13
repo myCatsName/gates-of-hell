@@ -17,11 +17,11 @@ import oxHead from "../Assets/CardFaces/oxhead2.webp";
 
 //SFX
 import {
-  slapSFX,
-  lockSFX,
-  cleansingBellSFX,
-  hauntingDrumsSFX,
-  gongs1SFX,
+  playSlapSFX,
+  playLockSFX,
+  playCleansingBellSFX,
+  playHauntingDrumsSFX,
+  playGongs1SFX,
 } from "../Sound/SFX";
 import { Howler } from "howler";
 
@@ -75,7 +75,7 @@ export function MemoryGame() {
   };
 
   const handleChoice = (card) => {
-    slapSFX.play();
+    playSlapSFX();
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
@@ -96,7 +96,7 @@ export function MemoryGame() {
           });
         });
         resetTurn();
-        lockSFX.play();
+        playLockSFX();
         setMatchesNeeded(matchesNeeded - 1);
         console.log("match");
       }
@@ -113,8 +113,8 @@ export function MemoryGame() {
         });
         resetTurn();
         Howler.volume(0.5);
-        lockSFX.play();
-        hauntingDrumsSFX.play();
+        playLockSFX();
+        playHauntingDrumsSFX();
         console.log("Game Won");
         setStats({ ...stats, cycleCount: stats.cycleCount + 1 });
         isPerfect &&
@@ -129,11 +129,11 @@ export function MemoryGame() {
       else {
         isPerfect && setIsPerfect(false);
         setTimeout(() => resetTurn(), 600);
-        cleansingBellSFX.play();
+        playCleansingBellSFX();
         console.log("no match");
         if (Math.random() >= (100 - jumpChance) * 0.01 && allowJumps) {
           jumpDrawer.onOpen();
-          gongs1SFX.play();
+          playGongs1SFX();
           setTimeout(() => jumpDrawer.onClose(), jumpDuration);
         }
       }
