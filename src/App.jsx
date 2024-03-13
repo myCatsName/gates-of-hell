@@ -13,9 +13,6 @@ import {
 import RootLayout from "./Layouts/RootLayout";
 import TitleScreen from "./Layouts/TitleScreen";
 
-// Audio
-import { playSlightBackgroundMusic } from "./Sound/BGMusic";
-
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
@@ -31,8 +28,6 @@ function App() {
     (success) => console.log("Orientation locked to landscape", success),
     (failure) => console.log("Orientation not locked/ not mobile", failure)
   );
-
-  playSlightBackgroundMusic(); //Night Attack on Sanjo Palace theme
 
   /*TODO: BUG:
   Routing in iFrame on itch.io works, but does not load all assets.
