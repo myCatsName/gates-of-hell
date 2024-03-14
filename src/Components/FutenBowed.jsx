@@ -3,12 +3,14 @@ import Futen_Bowed from "../Assets/Futen_bowed_trans.webp";
 import { playOM } from "../Sound/SFX";
 import { useContext } from "react";
 import GameContext from "../Context/GameContext";
+import { muteFX as muteSFX } from "../Context/AudioContext";
 
 export default function FutenBowed() {
   const { stats, setStats } = useContext(GameContext);
+
   const handleClick = () => {
     playOM();
-    setStats({ ...stats, omCount: stats.omCount + 1 });
+    !muteSFX && setStats({ ...stats, omCount: stats.omCount + 1 });
     console.log("Futen Has Been Pressed");
   };
 
