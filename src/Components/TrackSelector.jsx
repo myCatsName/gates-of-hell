@@ -4,7 +4,6 @@ import FooterButton from "./FooterButton";
 import { useToast } from "@chakra-ui/react";
 import TrackSelectedToast from "./TrackPlayingToast";
 
-//Audio track names
 import {
   playTendaiTensionMusic,
   playSanjoPalaceMusic,
@@ -12,8 +11,7 @@ import {
   playMeditationCushion,
 } from "../Sound/BGMusic";
 
-import { playSlapSFX } from "../Sound/SFX";
-const sfxOnClick = playSlapSFX;
+import { playSlapSFX as sfxOnClick } from "../Sound/SFX";
 
 const backgroundAudioTrack = [
   playSanjoPalaceMusic,
@@ -22,6 +20,7 @@ const backgroundAudioTrack = [
   playGomaDoMusic,
 ];
 
+//Audio track names
 const backgroundAudio = [
   `"Sanjo Palace Burning"`,
   `"Tendai Tension"`,

@@ -1,5 +1,4 @@
 import { FormControl, FormLabel, Switch } from "@chakra-ui/react";
-import { Howler } from "howler";
 import { useContext } from "react";
 import AudioContext from "../Context/AudioContext";
 import {
