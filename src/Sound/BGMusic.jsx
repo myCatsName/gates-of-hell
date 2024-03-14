@@ -32,12 +32,21 @@ const pickSegment = (howlArray) => {
   return Math.floor(Math.random() * howlArray.length);
 };
 
+let currentMusic;
+
+export function stopCurrentMusic() {
+  currentMusic.stop();
+}
+
 export function playSanjoPalaceMusic() {
   const SanjoPalaceMusic = new Howl({
     src: [SanjoPalaceBurns[pickSegment(SanjoPalaceBurns)]],
     autoplay: false,
     loop: false,
     volume: mute ? 0 : 0.45,
+    onplay: function () {
+      currentMusic = SanjoPalaceMusic;
+    },
     onend: function () {
       playSanjoPalaceMusic();
     },
@@ -51,6 +60,9 @@ export function playTendaiTensionMusic() {
     autoplay: false,
     loop: false,
     volume: mute ? 0 : 0.7,
+    onplay: function () {
+      currentMusic = TendaiTensionMusic;
+    },
     onend: function () {
       playTendaiTensionMusic();
     },
@@ -63,6 +75,9 @@ export function playMeditationCushion() {
     src: [MeditationCushion],
     loop: true,
     volume: mute ? 0 : 0.6,
+    onplay: function () {
+      currentMusic = MeditationCushionMusic;
+    },
   });
   MeditationCushionMusic.play();
 }
@@ -73,6 +88,9 @@ export function playGomaDoMusic() {
     autoplay: false,
     loop: true,
     volume: mute ? 0 : 0.6,
+    onplay: function () {
+      currentMusic = GomaDoMusic;
+    },
   });
   GomaDoMusic.play();
 }

@@ -2,22 +2,29 @@ import { FormControl, FormLabel, Switch } from "@chakra-ui/react";
 import { Howler } from "howler";
 import { useContext } from "react";
 import AudioContext from "../Context/AudioContext";
-import { playTamborineSFX } from "../Sound/SFX";
+import {
+  playTamborineSFX,
+  playUnMutableTamborineSFX,
+  stopCurrentSFX,
+} from "../Sound/SFX";
+import { stopCurrentMusic } from "../Sound/BGMusic";
 
 export default function MuteButton() {
   const { muteMusic, setMuteMusic, muteSFX, setMuteSFX } =
     useContext(AudioContext);
 
-  //TODO: sfx should play when muteSFX toggles to false, but plays with stale data (volume(0))
   const handleChange = (type) => {
     if (type === "music") {
-      Howler.stop();
+      stopCurrentMusic();
       playTamborineSFX();
       setMuteMusic((prev) => !prev);
       console.log(`Background Music (${muteMusic ? "unmuted" : "muted"})`);
     }
     if (type === "sfx") {
+      stopCurrentSFX();
       setMuteSFX((prev) => !prev);
+      //TODO: sfx should play when muteSFX toggles to false, but uses stale data (volume(0))
+      muteSFX && playUnMutableTamborineSFX();
       console.log(`Sound Effects (${muteSFX ? "unmuted" : "muted"})`);
     }
   };

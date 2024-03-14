@@ -11,10 +11,22 @@ import gongs1 from "../Sound/Effects/10gongs.mp3";
 import coinDrop from "../Sound/Effects/CoinDrop.wav";
 import doubleTambourine from "../Sound/Effects/doubleTambourine.mp3";
 
+const pooledSFX = new Set();
+
+export function stopCurrentSFX() {
+  for (const fx of pooledSFX) {
+    fx.stop();
+  }
+  pooledSFX.clear();
+}
+
 export function playOM() {
   const omSFX = new Howl({
     src: [OM],
     volume: muteSFX ? 0 : 0.6,
+    onplay: function () {
+      pooledSFX.add(omSFX);
+    },
   });
   omSFX.play();
 }
@@ -41,6 +53,9 @@ export function playCleansingBellSFX() {
     src: [cleansingBell],
     volume: muteSFX ? 0 : 4,
     rate: 0.85,
+    onplay: function () {
+      pooledSFX.add(cleansingBellSFX);
+    },
   });
   cleansingBellSFX.play();
 }
@@ -71,6 +86,9 @@ export function playHauntingDrumsSFX() {
     src: [hauntingDrums],
     volume: muteSFX ? 0 : 2.5,
     rate: 1,
+    onplay: function () {
+      pooledSFX.add(hauntingDrumsSFX);
+    },
     onend: function () {
       Howler.volume(1);
     },
@@ -85,6 +103,7 @@ export function playGongs1SFX() {
     volume: muteSFX ? 0 : 0.4,
     rate: 1,
     onplay: function () {
+      pooledSFX.add(gongs1SFX);
       setTimeout(() => gongs1SFX.fade(gongs1SFX.volume(), 0, 3000), 2000);
     },
     onfade: function () {
@@ -99,6 +118,14 @@ export function playTamborineSFX() {
   const tamborineSFX = new Howl({
     src: [tamborine],
     volume: muteSFX ? 0 : 0.2,
+    rate: 0.85,
+  });
+  tamborineSFX.play();
+}
+export function playUnMutableTamborineSFX() {
+  const tamborineSFX = new Howl({
+    src: [tamborine],
+    volume: 0.2,
     rate: 0.85,
   });
   tamborineSFX.play();
