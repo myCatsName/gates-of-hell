@@ -7,13 +7,8 @@ export let mute = false;
 export let muteFX = false;
 
 export function AudioProvider({ children }) {
-  const [audioTrack, setAudioTrack] = useState();
   const [muteMusic, setMuteMusic] = useState(false);
   const [muteSFX, setMuteSFX] = useState(false);
-
-  useEffect(() => {
-    console.log(audioTrack);
-  }, [audioTrack]);
 
   useEffect(() => {
     mute = muteMusic;
@@ -25,14 +20,12 @@ export function AudioProvider({ children }) {
 
   //Night Attack on Sanjo Palace theme on game load
   useEffect(() => {
-    setAudioTrack(playSanjoPalaceMusic());
+    playSanjoPalaceMusic();
   }, []);
 
   return (
     <AudioContext.Provider
       value={{
-        audioTrack,
-        setAudioTrack,
         muteMusic,
         setMuteMusic,
         muteSFX,
