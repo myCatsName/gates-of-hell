@@ -9,6 +9,8 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+import { playTamborineSFX, playDoubleTamborineSFX } from "../Sound/SFX";
+
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import FooterButton from "./FooterButton";
 import OptionsPage from "../Pages/OptionsPage";
@@ -18,7 +20,14 @@ export default function OptionsButton() {
 
   return (
     <>
-      <FooterButton onClick={onOpen}>Options</FooterButton>
+      <FooterButton
+        onClick={() => {
+          onOpen();
+          playTamborineSFX();
+        }}
+      >
+        Options
+      </FooterButton>
 
       <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
         <ModalOverlay />
@@ -41,7 +50,10 @@ export default function OptionsButton() {
           </ModalBody>
           <ModalFooter justifyContent="center">
             <Button
-              onClick={onClose}
+              onClick={() => {
+                onClose();
+                playDoubleTamborineSFX();
+              }}
               backgroundColor={"brown"}
               border={"2px solid gold"}
               textShadow={"0px 0px 2px gold"}
