@@ -2,7 +2,6 @@ Body {
   background: #333;
   overflow: hidden;
   height: 100dvh;
-  width: 100%;
 }
 
 /*This is one way to deal with chakra UI "rings"*/
@@ -18,7 +17,7 @@ button {
   }
 }
 /*double class selector to raise specificity above ChakraUI */
-.WarningModalButton.WarningModalButton {
+.ModalButton.ModalButton {
   background-color: brown;
   border: 2px solid gold;
   outline: 2px solid black;
@@ -38,105 +37,161 @@ maybe use an image element with transform */
 /*TODO: background image always fills the screen, but not
 always animating on some resolution sizes.*/
 
-/*targets the entry background-image*/
+/*target the red modal background with .entryModal
+but makes me a bit dizzy if both this and the background are running*/
 @media (prefers-reduced-motion: no-preference) {
+  /*targets the entry background-image*/
   .chakra-modal__overlay {
     animation: entryBackground 12s alternate infinite;
     background-position: 0 0;
     background-size: 1.1;
   }
-
-  /*targets the red modal background
-  but makes me a bit dizzy if both this and the background are running*/
-  .entryModal {
-    /* animation: entryBackground 30s linear infinite running; */
-    background-position: 0 0;
-  }
   @keyframes entryBackground {
     100% {
-      /* target the red modal background and loop
-    smoothly with x,y values -40.5% 31% */
+      /* can also target the red modal background and loop
+     x or y values -40.5% 31% for example*/
+      /* animation: entryBackground 30s linear infinite running; */
       background-position: 0 31%;
     }
   }
 }
 
-.Stats ul {
-  margin: 0px;
+/*.chakra-modal__content-container targets all chakra modals and drawers*/
+
+/*TODO: BUG: animating opacity of the entry modal box seems to make it render 
+  before going to opacity 0*/
+/* .entryModal {
+  animation: opacityAnimateIn 3s forwards !important;
+} */
+@keyframes opacityAnimateIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .Stats li {
-  margin: 0px;
-  padding: 0px;
-  line-height: 1em;
+  line-height: 1.25em;
+  opacity: 0;
+  animation: opacityAnimateIn 3s 3s forwards;
 }
 
 .OverlayImage {
-  z-index: 2;
+  z-index: 20;
   filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
 }
 
 /* TODO: improve responsive design. This removes the drummer and monk on mobile size, so it's roughly playable.*/
 @media screen and (max-width: 719px), screen and (max-height: 719px) {
   .OverlayImage {
-    display: none;
+    display: none !important;
   }
 }
 
 .MemoryGameLayout {
-  margin-top: 1em;
+  padding-top: 1em;
   position: absolute;
 }
-
 .MemoryGameLeft,
 .MemoryGameRight {
-  margin: 2vw;
-  margin-top: 0vh;
-  /* margin-bottom: 2vh; */
+  padding: 2vh 2vw;
   display: grid;
-  /* height: 100%; */
   grid-template-columns: repeat(2, 1fr);
   gap: 2vh 2vw;
 }
-
 .MemoryGameLeft {
   gap: 1vh 2vw; /* smaller left side due to larger Noh_drummer image at bottom */
 }
-
 .GameCard {
   position: relative;
   width: 100%;
   z-index: 1;
   filter: drop-shadow(0 0 1rem rgba(14, 13, 13, 0.8));
 }
-
 .GameCard .CardReverse {
-  width: 100%;
-  display: absolute;
-  border: 3px solid gold;
   border-radius: 5px;
+  /* display: block; */
+  border: 3px solid gold;
   box-shadow: "0px 12px 2px brown";
   outline: 3px solid black;
   transition: all ease-out;
   transition-delay: 0.15s;
 }
-
-.flipped .CardReverse {
-  transform: rotateY(90deg);
-}
-
 .GameCard .CardFront {
   transform: rotateY(90deg);
   position: absolute;
   transition: all ease-out 0.15s;
-  width: 100%;
-  display: block;
   border: 3px solid brown;
   border-radius: 5px;
   outline: 3px solid black;
 }
 
+/*CARD ANIMATIONS*/
+.flipped .CardReverse {
+  transform: rotateY(90deg);
+}
 .flipped .CardFront {
   transform: rotatey(0deg);
   transition-delay: 0.15s;
+}
+.gameCardFadeOut {
+  animation: opacityAnimateIn 3s 1s reverse forwards;
+}
+.cardShake {
+  animation: cardShake 0.07s ease-in-out 0.3s 8 alternate;
+}
+.cardJumpFilter {
+  --hue-variable: 0deg;
+  filter: hue-rotate(calc(322deg - var(--hue-variable))) grayscale(50%)
+    contrast(120%);
+}
+.GrayJumpFilter {
+  filter: grayscale(70%) brightness(0.4);
+  animation: grayJumpAnimation 2s ease-out;
+}
+.scaleToZero {
+  animation: scaleToZero 3.5s ease-in-out forwards,
+    grayJumpAnimation 3s reverse forwards, opacityAnimateIn 3s reverse forwards;
+}
+.cardSpin {
+  animation: cardSpin 3s infinite ease-in;
+}
+.MemoryGameRight .GameCard {
+  &.cardSpin {
+    animation: cardSpin 3s infinite reverse;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cardShake {
+    0% {
+      transform: translate(20px);
+    }
+    100% {
+      transform: translate(-10px);
+    }
+  }
+  @keyframes cardSpin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes grayJumpAnimation {
+    0% {
+      filter: grayscale(70%) brightness(0.4) contrast(200%);
+    }
+    100% {
+      filter: grayscale(0%) brightness(1) contrast(100%);
+    }
+  }
+  @keyframes scaleToZero {
+    100% {
+      scale: 0;
+    }
+  }
 }

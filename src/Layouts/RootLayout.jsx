@@ -6,7 +6,7 @@ import ThemeContext from "../Context/ThemeContext";
 //pages
 import Footer from "./Footer";
 import { Altar } from "../Pages/Altar";
-import { MemoryGame } from "../Components/MemoryGame";
+import MemoryGame from "../Components/MemoryGame";
 import StatsPanel from "../Components/StatsPanel";
 
 //assets
@@ -31,20 +31,21 @@ export default function RootLayout() {
       const imageElement = new Image();
       imageElement.src = image;
     });
-  });
+  }, []);
 
   return (
     <Grid
+      className="RootLayout"
       background={"#565656"}
       templateColumns="repeat(12, 1fr)"
-      templateRows="repeat(4,1fr) 1fr minmax(10vh, 20fr)" // (6,1fr) // 3.5em" //footer high enough for text
+      templateRows="repeat(4,1fr) 1fr minmax(10vh, 20fr)" // TODO: improve responsive designs
     >
       <GridItem
         as="header"
         backgroundImage={headerLinen}
         bgSize={"cover"}
         gridArea="1/4/2/10"
-        style={{ position: "relative" }}
+        style={{ position: "relative", height: `18vh` }}
       >
         <Altar />
         <StatsPanel />
@@ -52,6 +53,7 @@ export default function RootLayout() {
 
       <GridItem
         as="section"
+        className="sidePanel"
         backgroundColor={"black"}
         backgroundImage={`url(${require("../Assets/Swatches/" +
           sidepanelArt)})`}
@@ -60,6 +62,7 @@ export default function RootLayout() {
 
       <GridItem
         as="section"
+        className="sidePanel"
         backgroundColor={"black"}
         backgroundImage={`url(${require("../Assets/Swatches/" +
           sidepanelArt)})`}
@@ -68,6 +71,7 @@ export default function RootLayout() {
 
       <GridItem
         as="main"
+        id="fudoAltarImage"
         gridArea="2/4/6/10"
         backgroundImage={AltarImage}
         backgroundPosition="center"
@@ -80,14 +84,9 @@ export default function RootLayout() {
 
       <GridItem
         as="footer"
+        id="footerArea"
         gridArea="6/1/7/13"
         backgroundImage={linen}
-
-        // height={"10vh"}
-        // height="100svh"
-        // width={"100vw"}
-        // position="fixed"
-        // bottom="0"
       >
         <Footer />
       </GridItem>

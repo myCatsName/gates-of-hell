@@ -42,7 +42,7 @@ const cardImages = [
 ];
 
 //TODO : useReducer() instead of states
-export function MemoryGame() {
+export default function MemoryGame() {
   const [deck, setDeck] = useState([]);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
@@ -124,6 +124,9 @@ export function MemoryGame() {
         setTimeout(() => {
           shuffleCards();
         }, 4500);
+        document
+          .querySelectorAll(".GameCard")
+          .forEach((card) => card.classList.add("gameCardFadeOut"));
       }
       //no match
       else {
@@ -134,7 +137,9 @@ export function MemoryGame() {
         if (Math.random() >= (100 - jumpChance) * 0.01 && allowJumps) {
           jumpDrawer.onOpen();
           playGongs1SFX();
-          setTimeout(() => jumpDrawer.onClose(), jumpDuration);
+          setTimeout(() => {
+            jumpDrawer.onClose();
+          }, jumpDuration);
         }
       }
     }
@@ -161,9 +166,10 @@ export function MemoryGame() {
       <JumpDrawer isOpen={jumpDrawer.isOpen} onClose={jumpDrawer.onClose} />
       <Grid templateColumns="repeat(12, 1fr)" className="MemoryGameLayout">
         <GridItem className="MemoryGameLeft" gridColumn="1/4">
-          {deckLeft.map((card) => (
+          {deckLeft.map((card, index) => (
             <MemoryCard
               key={card.id}
+              index={index}
               card={card}
               handleChoice={handleChoice}
               disabled={disabled}
@@ -177,9 +183,10 @@ export function MemoryGame() {
         </GridItem>
         <GridItem gridColumn="4/10"></GridItem>
         <GridItem className="MemoryGameRight" gridColumn="10/13">
-          {deckRight.map((card) => (
+          {deckRight.map((card, index) => (
             <MemoryCard
               key={card.id}
+              index={index}
               card={card}
               handleChoice={handleChoice}
               disabled={disabled}

@@ -32,11 +32,13 @@ export default function OptionsButton() {
       <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
         <ModalOverlay />
         <ModalContent
+          className="optionsModal"
           textAlign={"center"}
           backgroundImage={very_dark_swatch}
           color={"green.400"}
           border={"4px solid black"}
           textShadow={"2px 2px 5px black"}
+          filter={`drop-shadow(0 20px 1rem rgba(14, 13, 13, 0.8))`}
         >
           <ModalHeader
             textAlign="center"
@@ -54,11 +56,7 @@ export default function OptionsButton() {
                 onClose();
                 playDoubleTamborineSFX();
               }}
-              backgroundColor={"brown"}
-              border={"2px solid gold"}
-              textShadow={"0px 0px 2px gold"}
-              _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
-              transition="all 0.3s ease-in-out"
+              className="ModalButton"
             >
               Go Back
             </Button>

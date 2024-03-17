@@ -56,7 +56,7 @@ export default function WarningModal() {
           color={"green.400"}
           border={"3px solid black"}
           textShadow={"2px 2px 5px black"}
-          filter={`drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8))`}
+          filter={`drop-shadow(0px 30px 2rem rgba(14, 13, 13, 0.7)) drop-shadow(0px 0px 5rem rgba(14, 13, 13, 0.8))`}
         >
           <ModalHeader textDecor={"underline"}>
             <h1>WARNING</h1>
@@ -71,16 +71,10 @@ export default function WarningModal() {
             You can choose to play without jump scares.
           </ModalBody>
           <ModalFooter justifyContent={"center"} gap={"10px"}>
-            <Button
-              onClick={() => handleClick(true)}
-              className="WarningModalButton"
-            >
+            <Button className="ModalButton" onClick={() => handleClick(true)}>
               I'm Ready for Hell!
             </Button>
-            <Button
-              onClick={() => handleClick(false)}
-              className="WarningModalButton"
-            >
+            <Button className="ModalButton" onClick={() => handleClick(false)}>
               Play Without Jump Scares
             </Button>
           </ModalFooter>
