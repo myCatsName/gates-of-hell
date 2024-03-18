@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 
 // Define a functional component called Typewriter
-export default function Typewriter({ text, delay, cursor = false }) {
+export default function Typewriter({
+  text,
+  delay = 75,
+  pause = 0,
+  cursor = false,
+}) {
   // with a state variable to track what text has been displayed
   const [typedText, setTypedText] = useState("");
 
@@ -19,9 +24,9 @@ export default function Typewriter({ text, delay, cursor = false }) {
       setTimeout(() => type(index + 1), delay);
     }
 
-    // Call the type function with an initial index of zero
-    type(0);
-  }, [text, delay]); // Pass text prop as a dependency to the useEffect hook
+    // Start the type function after a pause
+    setTimeout(() => type(0), pause);
+  }, [text, delay, pause]);
 
   // Return a span element that displays the typedText state variable with an optional blinking cursor
   return (

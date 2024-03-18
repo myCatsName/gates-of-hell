@@ -10,8 +10,7 @@ export function Altar() {
         fontFamily: "Allison, cursive",
       }}
     >
-      Fudō is Coming
-      {/* <Typewriter text="Fudō is Coming" delay={220} /> */}
+      <Typewriter text="Fudō is Coming" delay={75} pause={250} />
     </div>
   );
 }
