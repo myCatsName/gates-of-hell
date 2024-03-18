@@ -26,7 +26,7 @@ export default function Typewriter({
 
     // Start the type function after a pause
     setTimeout(() => type(0), pause);
-  }, [text, delay]); // Pass text prop as a dependency to the useEffect hook
+  }, [text, delay, pause]);
 
   // Return a span element that displays the typedText state variable with an optional blinking cursor
   return (
