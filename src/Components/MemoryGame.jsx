@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 import MemoryCard from "./MemoryCard";
 import { Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import GameContext from "../Context/GameContext";
@@ -24,11 +24,7 @@ import {
   playGongs1SFX,
 } from "../Sound/SFX";
 import { Howler } from "howler";
-
-// % to trigger a "jump" when not making a match
-const jumpChance = 21;
-// duration in ms TODO: return a slightly random rate maybe
-const jumpDuration = 900;
+import { VFX } from "../HelperFx/VFX";
 
 //Use 6 cards, TODO: later will want to pull from a larger pool, and include the "sting" Fudo/Buddha pair
 const cardImages = [
@@ -44,13 +40,12 @@ const cardImages = [
 //TODO : useReducer() instead of states
 export default function MemoryGame() {
   const [deck, setDeck] = useState([]);
+  const [disabled, setDisabled] = useState(false);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
-  const [disabled, setDisabled] = useState(false);
-  const [isPerfect, setIsPerfect] = useState(true);
-  const [gameFinished, setGameFinished] = useState(false);
   const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
-  const { stats, setStats, allowJumps } = useContext(GameContext);
+  const isPerfect = useRef(true);
+  const { stats, setStats, allowJumps, jumpChance } = useContext(GameContext);
 
   function shuffleCards() {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -58,9 +53,8 @@ export default function MemoryGame() {
       .map((card) => ({ ...card, id: Math.random() }));
     setChoiceOne(null);
     setChoiceTwo(null);
-    setGameFinished(false);
     setDeck(shuffledCards);
-    setIsPerfect(true);
+    isPerfect.current = true;
     setMatchesNeeded(cardImages.length - 1);
   }
 
@@ -80,7 +74,11 @@ export default function MemoryGame() {
   };
 
   const jumpDrawer = useDisclosure();
-  // TODO: SFX and win methods should be defined separately
+  const jumpControl = {
+    onOpen: jumpDrawer.onOpen,
+    onClose: jumpDrawer.onClose,
+  };
+
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       setDisabled(true);
@@ -117,41 +115,42 @@ export default function MemoryGame() {
         playHauntingDrumsSFX();
         console.log("Game Won");
         setStats({ ...stats, cycleCount: stats.cycleCount + 1 });
-        isPerfect &&
+        isPerfect.current === true &&
           setStats({ ...stats, perfectCycles: stats.perfectCycles + 1 }) &&
           console.log("Perfect!");
-        setGameFinished(true);
         setTimeout(() => {
           shuffleCards();
-        }, 4500);
-        document
-          .querySelectorAll(".GameCard")
-          .forEach((card) => card.classList.add("gameCardFadeOut"));
+        }, 5000);
+        setTimeout(() => {
+          VFX.CARDEXIT.SPINSHRINKTOCENTER();
+        }, 1000);
       }
       //no match
       else {
-        isPerfect && setIsPerfect(false);
-        setTimeout(() => resetTurn(), 600);
+        if (isPerfect.current === true) {
+          isPerfect.current = false;
+        }
         playCleansingBellSFX();
         console.log("no match");
         if (Math.random() >= (100 - jumpChance) * 0.01 && allowJumps) {
-          jumpDrawer.onOpen();
+          setTimeout(resetTurn, 1600);
           playGongs1SFX();
-          setTimeout(() => {
-            jumpDrawer.onClose();
-          }, jumpDuration);
+          VFX.JUMP.DARKHUESHAKE(jumpControl);
+        } else {
+          setTimeout(resetTurn, 600);
         }
       }
     }
   }, [
     choiceOne,
     choiceTwo,
-    isPerfect,
     matchesNeeded,
-    allowJumps,
     stats,
     setStats,
-    jumpDrawer,
+    allowJumps,
+    jumpChance,
+    /* TODO: may need to refactor jumpControl to avoid dependency error*/
+    // jumpControl,
   ]);
 
   const deckLeft = [];
@@ -160,45 +159,38 @@ export default function MemoryGame() {
     i < deck.length / 2 ? deckLeft.push(deck[i]) : deckRight.push(deck[i]);
   }
 
-  //TODO: Grid component should be separate
   return (
-    <>
+    <Grid templateColumns="repeat(12, 1fr)" className="MemoryGameLayout">
       <JumpDrawer isOpen={jumpDrawer.isOpen} onClose={jumpDrawer.onClose} />
-      <Grid templateColumns="repeat(12, 1fr)" className="MemoryGameLayout">
-        <GridItem className="MemoryGameLeft" gridColumn="1/4">
-          {deckLeft.map((card, index) => (
-            <MemoryCard
-              key={card.id}
-              index={index}
-              card={card}
-              handleChoice={handleChoice}
-              disabled={disabled}
-              flipped={
-                card === choiceOne ||
-                card === choiceTwo ||
-                card.matched === true
-              }
-            />
-          ))}
-        </GridItem>
-        <GridItem gridColumn="4/10"></GridItem>
-        <GridItem className="MemoryGameRight" gridColumn="10/13">
-          {deckRight.map((card, index) => (
-            <MemoryCard
-              key={card.id}
-              index={index}
-              card={card}
-              handleChoice={handleChoice}
-              disabled={disabled}
-              flipped={
-                card === choiceOne ||
-                card === choiceTwo ||
-                card.matched === true
-              }
-            />
-          ))}
-        </GridItem>
-      </Grid>
-    </>
+      <GridItem className="MemoryGameLeft" gridColumn="1/4">
+        {deckLeft.map((card, index) => (
+          <MemoryCard
+            key={card.id}
+            index={index}
+            card={card}
+            handleChoice={handleChoice}
+            disabled={disabled}
+            flipped={
+              card === choiceOne || card === choiceTwo || card.matched === true
+            }
+          />
+        ))}
+      </GridItem>
+      <GridItem gridColumn="4/10"></GridItem>
+      <GridItem className="MemoryGameRight" gridColumn="10/13">
+        {deckRight.map((card, index) => (
+          <MemoryCard
+            key={card.id}
+            index={index}
+            card={card}
+            handleChoice={handleChoice}
+            disabled={disabled}
+            flipped={
+              card === choiceOne || card === choiceTwo || card.matched === true
+            }
+          />
+        ))}
+      </GridItem>
+    </Grid>
   );
 }

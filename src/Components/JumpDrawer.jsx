@@ -42,22 +42,20 @@ export default function JumpDrawer({ isOpen, onClose }) {
   }, [isOpen]);
 
   return (
-    <>
-      <Drawer
-        isOpen={isOpen}
-        placement={randomDirection()}
-        onClose={onClose}
-        size={"full"}
-      >
-        <DrawerContent
-          backgroundColor="transparent"
-          backgroundImage={currentJump}
-          backgroundRepeat={"no-repeat"}
-          bgSize={"contain"}
-          backgroundPosition={"center"}
-          boxShadow={"none"}
-        />
-      </Drawer>
-    </>
+    <Drawer
+      isOpen={isOpen}
+      placement={randomDirection()}
+      onClose={onClose}
+      size={"full"}
+    >
+      <DrawerContent
+        backgroundColor="transparent"
+        backgroundImage={currentJump}
+        backgroundRepeat={"no-repeat"}
+        bgSize={"contain"}
+        backgroundPosition={"center"}
+        boxShadow={"none"}
+      />
+    </Drawer>
   );
 }

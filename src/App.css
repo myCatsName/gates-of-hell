@@ -106,11 +106,13 @@ but makes me a bit dizzy if both this and the background are running*/
 }
 .GameCard {
   position: relative;
+  display: block;
   width: 100%;
   z-index: 1;
   filter: drop-shadow(0 0 1rem rgba(14, 13, 13, 0.8));
 }
 .GameCard .CardReverse {
+  width: 100%;
   border-radius: 5px;
   /* display: block; */
   border: 3px solid gold;
@@ -121,6 +123,8 @@ but makes me a bit dizzy if both this and the background are running*/
 }
 .GameCard .CardFront {
   transform: rotateY(90deg);
+  width: 100%;
+  display: block;
   position: absolute;
   transition: all ease-out 0.15s;
   border: 3px solid brown;
@@ -137,12 +141,15 @@ but makes me a bit dizzy if both this and the background are running*/
   transition-delay: 0.15s;
 }
 .gameCardFadeOut {
-  animation: opacityAnimateIn 3s 1s reverse forwards;
+  opacity: 0;
+  transition: all 3s 1s;
+  /* animation: opacityAnimateIn 3s 1s reverse forwards; */
 }
 .cardShake {
   animation: cardShake 0.07s ease-in-out 0.3s 8 alternate;
 }
-.cardJumpFilter {
+
+.cardHueFilter {
   --hue-variable: 0deg;
   filter: hue-rotate(calc(322deg - var(--hue-variable))) grayscale(50%)
     contrast(120%);
@@ -173,6 +180,7 @@ but makes me a bit dizzy if both this and the background are running*/
       transform: translate(-10px);
     }
   }
+
   @keyframes cardSpin {
     0% {
       transform: rotate(0deg);
