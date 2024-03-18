@@ -40,8 +40,7 @@ always animating on some resolution sizes.*/
 /*target the red modal background with .entryModal
 but makes me a bit dizzy if both this and the background are running*/
 @media (prefers-reduced-motion: no-preference) {
-  /*targets the entry background-image*/
-  .chakra-modal__overlay {
+  .entryBackground {
     animation: entryBackground 12s alternate infinite;
     background-position: 0 0;
     background-size: 1.1;
@@ -49,8 +48,7 @@ but makes me a bit dizzy if both this and the background are running*/
   @keyframes entryBackground {
     100% {
       /* can also target the red modal background and loop
-     x or y values -40.5% 31% for example*/
-      /* animation: entryBackground 30s linear infinite running; */
+     x or y values -40.5% 31% for example animation: entryBackground 30s linear infinite running; */
       background-position: 0 31%;
     }
   }
