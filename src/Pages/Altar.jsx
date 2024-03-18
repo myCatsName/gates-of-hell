@@ -6,7 +6,7 @@ export function Altar() {
       className="Altar"
       style={{
         textAlign: "center",
-        fontSize: "6vw",
+        fontSize: "12vh",
         fontFamily: "Allison, cursive",
       }}
     >

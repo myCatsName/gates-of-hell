@@ -9,7 +9,7 @@ const THEMES = {
     cardBack: "PlayingCardReverse.webp",
   },
   CHILL: {
-    background: "newGreenSwatch.png", //For some dumb reason greenSquaresSwatch.png stopped working :/
+    background: "newGreenSwatch.webp", //For some dumb reason greenSquaresSwatch.png stopped working :/
     cardBack: "EmbossedFlowerCard.webp",
   },
   SPOOKY: {
