@@ -6,11 +6,6 @@
       "src": "Fudo_Icon.webp",
       "type": "image/webp",
       "sizes": "any"
-    },
-    {
-      "src": "Fudo_Icon.png",
-      "type": "image/png",
-      "sizes": "any"
     }
   ],
   "start_url": ".",
