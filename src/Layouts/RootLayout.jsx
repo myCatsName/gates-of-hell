@@ -32,7 +32,6 @@ export default function RootLayout() {
         <StatsPanel />
       </GridItem>
 
-      {/*TODO: why can't gridArea pass as a prop?*/}
       <SidePanels />
 
       <GridItem
