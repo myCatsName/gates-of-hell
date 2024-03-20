@@ -1,9 +1,9 @@
 import Typewriter from "../Components/Typewriter";
 
-export function Altar() {
+export function Headline() {
   return (
     <div
-      className="Altar"
+      className="Headline"
       style={{
         textAlign: "center",
         fontSize: "12vh",
