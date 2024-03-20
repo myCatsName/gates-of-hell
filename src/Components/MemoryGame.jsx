@@ -45,7 +45,7 @@ export default function MemoryGame() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
   const isPerfect = useRef(true);
-  const { stats, setStats, allowJumps, jumpChance } = useContext(GameContext);
+  const { stats, setStats, jumpChance } = useContext(GameContext);
 
   function shuffleCards() {
     const shuffledCards = [...cardImages, ...cardImages]
@@ -131,7 +131,7 @@ export default function MemoryGame() {
         }
         playCleansingBellSFX();
         console.log("no match");
-        if (Math.random() >= (100 - jumpChance) * 0.01 && allowJumps) {
+        if (Math.random() >= (100 - jumpChance.current) * 0.01) {
           setTimeout(resetTurn, 1600);
           playGongs1SFX();
           VFX.JUMP.DARKHUESHAKE(jumpControl);
@@ -146,7 +146,6 @@ export default function MemoryGame() {
     matchesNeeded,
     stats,
     setStats,
-    allowJumps,
     jumpChance,
     jumpControl,
   ]);
