@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useRef } from "react";
+import { useEffect, useState, useContext, useRef, useMemo } from "react";
 import MemoryCard from "./MemoryCard";
 import { Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import GameContext from "../Context/GameContext";
@@ -74,10 +74,9 @@ export default function MemoryGame() {
   };
 
   const jumpDrawer = useDisclosure();
-  const jumpControl = {
-    onOpen: jumpDrawer.onOpen,
-    onClose: jumpDrawer.onClose,
-  };
+  const jumpControl = useMemo(() => {
+    return { onOpen: jumpDrawer.onOpen, onClose: jumpDrawer.onClose };
+  }, [jumpDrawer.onOpen, jumpDrawer.onClose]);
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
@@ -149,8 +148,7 @@ export default function MemoryGame() {
     setStats,
     allowJumps,
     jumpChance,
-    /* TODO: may need to refactor jumpControl to avoid dependency error*/
-    // jumpControl,
+    jumpControl,
   ]);
 
   const deckLeft = [];
