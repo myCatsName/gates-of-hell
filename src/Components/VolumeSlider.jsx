@@ -36,10 +36,10 @@ export default function VolumeSlider({
         colorScheme="yellow"
         onChange={(value) => handleChange(value)}
       >
-        <SliderMark value={0} mt="1" fontSize="med">
+        <SliderMark value={0} mt="1" w="12" fontSize="med">
           {volume >= 10 ? "Mute" : ""}
         </SliderMark>
-        <SliderMark value={100} mt="1" fontSize="med">
+        <SliderMark value={100} mt="1" w="12" fontSize="med">
           {volume !== 100 ? "Max" : ""}
         </SliderMark>
         <SliderMark
