@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
-import { playSanjoPalaceMusic, updateMusicVolume } from "../Sound/BGMusic";
-import { updateSFXVolume } from "../Sound/SFX";
+import { playSanjoPalaceMusic, updateMusicVolume } from "../HelperFx/BGMusic";
+import { updateSFXVolume } from "../HelperFx/SFX";
 
 const AudioContext = createContext();
 

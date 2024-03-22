@@ -9,9 +9,9 @@ import {
   playSanjoPalaceMusic,
   playGomaDoMusic,
   playMeditationCushion,
-} from "../Sound/BGMusic";
+} from "../HelperFx/BGMusic";
 
-import { playSlapSFX as sfxOnClick } from "../Sound/SFX";
+import { playSlapSFX as sfxOnClick } from "../HelperFx/SFX";
 
 const backgroundAudioTrack = [
   playSanjoPalaceMusic,

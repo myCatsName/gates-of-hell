@@ -22,7 +22,7 @@ import {
   playCleansingBellSFX,
   playHauntingDrumsSFX,
   playGongs1SFX,
-} from "../Sound/SFX";
+} from "../HelperFx/SFX";
 import { VFX } from "../HelperFx/VFX";
 
 //Use 6 cards, TODO: later will want to pull from a larger pool, and include the "sting" Fudo/Buddha pair

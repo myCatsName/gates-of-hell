@@ -5,7 +5,7 @@ import {
   SliderThumb,
   SliderTrack,
 } from "@chakra-ui/react";
-import { playUnMutableTamborineSFX } from "../Sound/SFX";
+import { playUnMutableTamborineSFX } from "../HelperFx/SFX";
 
 export default function VolumeSlider({
   name,

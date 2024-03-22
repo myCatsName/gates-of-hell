@@ -20,7 +20,7 @@ import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import sanjo_palace from "../Assets/sanjo_palace_burning.jpg";
 
 //SFX
-import { playDoubleTamborineSFX } from "../Sound/SFX";
+import { playDoubleTamborineSFX } from "../HelperFx/SFX";
 
 const gameStartSFX = playDoubleTamborineSFX;
 

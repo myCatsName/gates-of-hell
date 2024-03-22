@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import { useContext } from "react";
 import GameContext from "../Context/GameContext";
-import { playTamborineSFX } from "../Sound/SFX";
+import { playTamborineSFX } from "../HelperFx/SFX";
 
 export default function JumpToggle() {
   const { jumpChance, defaultJumpChance } = useContext(GameContext);

@@ -14,7 +14,7 @@ import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import FooterButton from "./FooterButton";
 import { VERSION } from "../VERSION";
 
-import { playCleansingBellSFX, playSlapSFX } from "../Sound/SFX";
+import { playCleansingBellSFX, playSlapSFX } from "../HelperFx/SFX";
 const sfxOnClick = playCleansingBellSFX;
 const sfxOnClose = playSlapSFX;
 

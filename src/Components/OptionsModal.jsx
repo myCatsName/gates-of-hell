@@ -8,7 +8,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
-import { playTamborineSFX, playDoubleTamborineSFX } from "../Sound/SFX";
+import { playTamborineSFX, playDoubleTamborineSFX } from "../HelperFx/SFX";
 
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
 import FooterButton from "./FooterButton";
