@@ -23,7 +23,6 @@ import {
   playHauntingDrumsSFX,
   playGongs1SFX,
 } from "../Sound/SFX";
-import { Howler } from "howler";
 import { VFX } from "../HelperFx/VFX";
 
 //Use 6 cards, TODO: later will want to pull from a larger pool, and include the "sting" Fudo/Buddha pair
@@ -109,7 +108,6 @@ export default function MemoryGame() {
           });
         });
         resetTurn();
-        Howler.volume(0.5);
         playLockSFX();
         playHauntingDrumsSFX();
         console.log("Game Won");

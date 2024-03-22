@@ -21,9 +21,10 @@ export default function JumpToggle() {
   return (
     <div
       style={{
-        padding: "20px",
+        padding: "10px 20px 15px 20px",
         width: "100%",
         textAlign: "center",
+        userSelect: "none",
       }}
     >
       <h2 style={{ fontWeight: "bold", fontSize: "1.8rem" }}>Jump Scares</h2>
