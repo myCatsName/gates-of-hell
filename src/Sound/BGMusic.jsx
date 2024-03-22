@@ -1,5 +1,5 @@
 import { Howl } from "howler";
-import { mute } from "../Context/AudioContext";
+import { masterVolume } from "../Context/AudioContext";
 import SlightBackground from "../Sound/SanjoPalaceBurns/SlightBackground.mp3";
 import SlightBackground2 from "../Sound/SanjoPalaceBurns/SlightBackground2.mp3";
 import SlightBackground3 from "../Sound/SanjoPalaceBurns/SlightBackground3.mp3";
@@ -32,20 +32,31 @@ const pickSegment = (howlArray) => {
   return Math.floor(Math.random() * howlArray.length);
 };
 
-let currentMusic;
+//Initialize the object shape
+let currentMusic = {
+  track: new Howl({
+    src: [TendaiTension],
+  }),
+  defaultVolume: 0.45,
+};
 
 export function stopCurrentMusic() {
-  currentMusic.stop();
+  currentMusic.track.stop();
+}
+
+export function updateMusicVolume() {
+  currentMusic.track.volume(currentMusic.defaultVolume * masterVolume);
 }
 
 export function playSanjoPalaceMusic() {
+  const defaultVolume = 0.45;
   const SanjoPalaceMusic = new Howl({
     src: [SanjoPalaceBurns[pickSegment(SanjoPalaceBurns)]],
     autoplay: false,
     loop: false,
-    volume: mute ? 0 : 0.45,
+    volume: defaultVolume * masterVolume,
     onplay: function () {
-      currentMusic = SanjoPalaceMusic;
+      currentMusic = { track: SanjoPalaceMusic, defaultVolume: defaultVolume };
     },
     onend: function () {
       playSanjoPalaceMusic();
@@ -55,13 +66,17 @@ export function playSanjoPalaceMusic() {
 }
 
 export function playTendaiTensionMusic() {
+  const defaultVolume = 0.7;
   const TendaiTensionMusic = new Howl({
     src: [TendaiTension[pickSegment(TendaiTension)]],
     autoplay: false,
     loop: false,
-    volume: mute ? 0 : 0.7,
+    volume: defaultVolume * masterVolume,
     onplay: function () {
-      currentMusic = TendaiTensionMusic;
+      currentMusic = {
+        track: TendaiTensionMusic,
+        defaultVolume: defaultVolume,
+      };
     },
     onend: function () {
       playTendaiTensionMusic();
@@ -71,25 +86,30 @@ export function playTendaiTensionMusic() {
 }
 
 export function playMeditationCushion() {
+  const defaultVolume = 0.6;
   const MeditationCushionMusic = new Howl({
     src: [MeditationCushion],
     loop: true,
-    volume: mute ? 0 : 0.6,
+    volume: defaultVolume * masterVolume,
     onplay: function () {
-      currentMusic = MeditationCushionMusic;
+      currentMusic = {
+        track: MeditationCushionMusic,
+        defaultVolume: defaultVolume,
+      };
     },
   });
   MeditationCushionMusic.play();
 }
 
 export function playGomaDoMusic() {
+  const defaultVolume = 0.6;
   const GomaDoMusic = new Howl({
     src: [GomaDo],
     autoplay: false,
     loop: true,
-    volume: mute ? 0 : 0.6,
+    volume: defaultVolume * masterVolume,
     onplay: function () {
-      currentMusic = GomaDoMusic;
+      currentMusic = { track: GomaDoMusic, defaultVolume: defaultVolume };
     },
   });
   GomaDoMusic.play();

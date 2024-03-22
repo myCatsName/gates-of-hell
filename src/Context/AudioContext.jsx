@@ -1,22 +1,26 @@
 import { createContext, useEffect, useState } from "react";
 
-import { playSanjoPalaceMusic } from "../Sound/BGMusic";
+import { playSanjoPalaceMusic, updateMusicVolume } from "../Sound/BGMusic";
+import { updateSFXVolume } from "../Sound/SFX";
 
 const AudioContext = createContext();
-export let mute = false;
-export let muteFX = false;
+
+export let masterVolume = 1;
+export let masterSFX = 1;
 
 export function AudioProvider({ children }) {
-  const [muteMusic, setMuteMusic] = useState(false);
-  const [muteSFX, setMuteSFX] = useState(false);
+  const [musicVolume, setMusicVolume] = useState(100);
+  const [sfxVolume, setSFXVolume] = useState(100);
 
   useEffect(() => {
-    mute = muteMusic;
-  }, [muteMusic]);
+    masterVolume = musicVolume * 0.01;
+    updateMusicVolume();
+  }, [musicVolume]);
 
   useEffect(() => {
-    muteFX = muteSFX;
-  }, [muteSFX]);
+    masterSFX = sfxVolume * 0.01;
+    updateSFXVolume();
+  }, [sfxVolume]);
 
   //Night Attack on Sanjo Palace theme on game load
   useEffect(() => {
@@ -26,10 +30,10 @@ export function AudioProvider({ children }) {
   return (
     <AudioContext.Provider
       value={{
-        muteMusic,
-        setMuteMusic,
-        muteSFX,
-        setMuteSFX,
+        musicVolume,
+        setMusicVolume,
+        sfxVolume,
+        setSFXVolume,
       }}
     >
       {children}

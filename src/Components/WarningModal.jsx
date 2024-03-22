@@ -26,12 +26,12 @@ const gameStartSFX = playDoubleTamborineSFX;
 
 export default function WarningModal() {
   const { isOpen, onClose } = useDisclosure({ defaultIsOpen: true });
-  const { setAllowJumps } = useContext(GameContext);
+  const { jumpChance, defaultJumpChance } = useContext(GameContext);
 
   const navigate = useNavigate();
 
   const handleClick = (preference) => {
-    setAllowJumps(preference);
+    jumpChance.current = preference ? defaultJumpChance : 0;
     gameStartSFX();
     //Check if in iFrame (itch.io)
     window.self === window.top ? navigate("main") : onClose();
