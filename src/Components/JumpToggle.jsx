@@ -11,9 +11,11 @@ import { playTamborineSFX } from "../Sound/SFX";
 
 export default function JumpToggle() {
   const { jumpChance, defaultJumpChance } = useContext(GameContext);
-  const [value, setValue] = useState(jumpChance.current === 0 ? 0 : 33);
-
   //In the slider, we'll hide the default value by mapping it to 33
+  const [value, setValue] = useState(
+    jumpChance.current === defaultJumpChance ? 33 : jumpChance.current
+  );
+
   function handleChange(value) {
     jumpChance.current = value === 33 ? defaultJumpChance : value;
     setValue(value);
