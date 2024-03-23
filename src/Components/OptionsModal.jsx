@@ -48,7 +48,7 @@ export default function OptionsButton() {
                 onClose();
                 playDoubleTamborineSFX();
               }}
-              className="ModalButton"
+              className="modal-button"
             >
               Go Back
             </Button>
