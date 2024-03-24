@@ -71,10 +71,10 @@ export default function WarningModal() {
             You can choose to play without jump scares.
           </ModalBody>
           <ModalFooter justifyContent={"center"} gap={"10px"}>
-            <Button className="ModalButton" onClick={() => handleClick(true)}>
+            <Button className="modal-button" onClick={() => handleClick(true)}>
               I'm Ready for Hell!
             </Button>
-            <Button className="ModalButton" onClick={() => handleClick(false)}>
+            <Button className="modal-button" onClick={() => handleClick(false)}>
               Play Without Jump Scares
             </Button>
           </ModalFooter>
