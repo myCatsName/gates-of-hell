@@ -7,14 +7,12 @@ Body {
 
 button {
   filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
-  font-family: "Slackside One";
   &:active {
     transform: translateY(3px);
   }
 }
 /*double class selector to raise specificity above ChakraUI */
 .modal-button.modal-button {
-  font-size: 1.25em;
   background: linear-gradient(
       rgba(165, 42, 42, 0.7) 0%,
       rgba(165, 42, 42, 0.7) 100%
