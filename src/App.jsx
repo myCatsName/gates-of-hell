@@ -1,7 +1,7 @@
 import "./App.css";
 
 //React
-import React, { Suspense } from "react";
+import React, { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,7 +12,7 @@ import {
 // Pages
 import RootLayout from "./Layouts/RootLayout";
 import TitleScreen from "./Layouts/TitleScreen";
-import Preloader from "./HelperFx/Preloader";
+const Preloader = lazy(() => import("./HelperFx/Preloader"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
