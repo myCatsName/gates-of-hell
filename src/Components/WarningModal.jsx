@@ -17,7 +17,7 @@ import {
 
 //assets
 import very_dark_swatch from "../Assets/Swatches/very_dark_swatch.png";
-import sanjo_palace from "../Assets/sanjo_palace_burning.jpg";
+import sanjo_palace from "../Assets/sanjo_palace_burning.webp";
 
 //SFX
 import { playDoubleTamborineSFX } from "../Sound/SFX";
@@ -34,10 +34,8 @@ export default function WarningModal() {
     jumpChance.current = preference ? defaultJumpChance : 0;
     gameStartSFX();
     //Check if in iFrame (itch.io)
-    window.self === window.top ? navigate("main") : onClose();
-    console.log(
-      "Jumps: " + preference,
-      "\n Title screen modal nav to main layout"
+    document.startViewTransition(() =>
+      window.self === window.top ? navigate("main") : onClose()
     );
   };
 
