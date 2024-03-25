@@ -19,7 +19,9 @@ export default function StatsPanel() {
     >
       <ul style={{ listStyle: "none" }}>
         <li>OMs : {stats.omCount}</li>
-        <li>Perfect Cycles : {stats.perfectCycles}</li>
+        {stats.perfectCycles > 0 && (
+          <li>Perfect Cycles : {stats.perfectCycles}</li>
+        )}
         <li>Cycles Cleared : {stats.cycleCount}</li>
       </ul>
     </Box>

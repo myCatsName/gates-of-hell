@@ -3,6 +3,7 @@ import { createContext, useEffect, useRef, useState } from "react";
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
+  const [gameFinished, setGameFinished] = useState(false);
   const defaultJumpChance = 21;
   const jumpChance = useRef(defaultJumpChance); // % to trigger a "jump" when not making a match
   const [stats, setStats] = useState(
@@ -25,6 +26,8 @@ export function GameProvider({ children }) {
         setStats,
         jumpChance,
         defaultJumpChance,
+        gameFinished,
+        setGameFinished,
       }}
     >
       {children}

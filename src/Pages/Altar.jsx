@@ -1,6 +1,9 @@
 import Typewriter from "../Components/Typewriter";
+import { useContext } from "react";
+import GameContext from "../Context/GameContext";
 
 export function Headline() {
+  const { gameFinished } = useContext(GameContext);
   return (
     <div
       className="Headline"
@@ -10,7 +13,12 @@ export function Headline() {
         fontFamily: "Allison, cursive",
       }}
     >
-      <Typewriter text="Fudō is Coming" delay={75} pause={250} />
+      <Typewriter
+        className="typewriter"
+        text={gameFinished ? "You Won!" : "Fudō is Coming"}
+        delay={75}
+        pause={250}
+      />
     </div>
   );
 }
