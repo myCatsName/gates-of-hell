@@ -1,7 +1,7 @@
 import "./App.css";
 
 //React
-import React from "react";
+import React, { Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -12,6 +12,7 @@ import {
 // Pages
 import RootLayout from "./Layouts/RootLayout";
 import TitleScreen from "./Layouts/TitleScreen";
+import Preloader from "./HelperFx/Preloader";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,12 +38,22 @@ function App() {
     return (
       <>
         <RouterProvider router={router} />
-        <RootLayout />
+        <Suspense>
+          <Preloader />
+          <RootLayout />
+        </Suspense>
       </>
     );
   } else {
     console.log("not framed");
-    return <RouterProvider router={router} />;
+    return (
+      <>
+        <RouterProvider router={router} />
+        <Suspense>
+          <Preloader />
+        </Suspense>
+      </>
+    );
   }
 }
 
