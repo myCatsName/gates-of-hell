@@ -4,7 +4,7 @@ const ThemeContext = createContext();
 
 const THEMES = {
   DEFAULT: {
-    background: "background_swatch.png",
+    background: "background_swatch.webp",
     cardBack: "PlayingCardReverse.webp",
   },
   CHILL: {
