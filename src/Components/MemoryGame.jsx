@@ -1,11 +1,4 @@
-import {
-  useEffect,
-  useState,
-  useContext,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
+import { useEffect, useState, useContext, useMemo, useCallback } from "react";
 import MemoryCard from "./MemoryCard";
 import { Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import GameContext from "../Context/GameContext";
@@ -50,8 +43,7 @@ export default function MemoryGame() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
-  const isPerfect = useRef(true);
-  const { stats, setStats, jumpChance, setGameFinished } =
+  const { stats, setStats, jumpChance, setGameFinished, isPerfect } =
     useContext(GameContext);
 
   const shuffleCards = useCallback(() => {
@@ -64,7 +56,7 @@ export default function MemoryGame() {
     setDeck(shuffledCards);
     isPerfect.current = true;
     setMatchesNeeded(cardImages.length - 1);
-  }, [setGameFinished]);
+  }, [setGameFinished, isPerfect]);
 
   useEffect(() => {
     shuffleCards();
@@ -154,6 +146,7 @@ export default function MemoryGame() {
     matchesNeeded,
     stats,
     setStats,
+    isPerfect,
     jumpChance,
     jumpControl,
     shuffleCards,

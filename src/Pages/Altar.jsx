@@ -3,7 +3,7 @@ import { useContext } from "react";
 import GameContext from "../Context/GameContext";
 
 export function Headline() {
-  const { gameFinished } = useContext(GameContext);
+  const { gameFinished, isPerfect } = useContext(GameContext);
   return (
     <div
       className="Headline"
@@ -15,7 +15,13 @@ export function Headline() {
     >
       <Typewriter
         className="typewriter"
-        text={gameFinished ? "You Won!" : "Fudō is Coming"}
+        text={
+          gameFinished
+            ? isPerfect.current
+              ? "Perfect!"
+              : "You Won!"
+            : "Fudō is Coming"
+        }
         delay={75}
         pause={250}
       />
