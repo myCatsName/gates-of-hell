@@ -82,13 +82,6 @@ but makes me a bit dizzy if both this and the background are running*/
   }
 }
 
-/*.chakra-modal__content-container targets all chakra modals and drawers*/
-
-/*TODO: BUG: animating opacity of the entry modal box seems to make it render 
-  before going to opacity 0*/
-/* .entryModal {
-  animation: opacityAnimateIn 3s forwards !important;
-} */
 @keyframes opacityAnimateIn {
   0% {
     opacity: 0;
