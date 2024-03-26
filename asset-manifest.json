@@ -1,11 +1,8 @@
 {
   "files": {
-    "main.css": "/gates-of-hell/static/css/main.818d7b4f.css",
-    "main.js": "/gates-of-hell/static/js/main.31310f5b.js",
-    "static/js/578.82de8d99.chunk.js": "/gates-of-hell/static/js/578.82de8d99.chunk.js",
-    "static/js/435.5dc5f7ee.chunk.js": "/gates-of-hell/static/js/435.5dc5f7ee.chunk.js",
-    "static/js/870.2361f248.chunk.js": "/gates-of-hell/static/js/870.2361f248.chunk.js",
-    "static/js/665.069f4542.chunk.js": "/gates-of-hell/static/js/665.069f4542.chunk.js",
+    "main.css": "/gates-of-hell/static/css/main.a5268738.css",
+    "main.js": "/gates-of-hell/static/js/main.7a211697.js",
+    "static/js/230.e3c13ff7.chunk.js": "/gates-of-hell/static/js/230.e3c13ff7.chunk.js",
     "static/media/PlayingCardReverse.png": "/gates-of-hell/static/media/PlayingCardReverse.29af7148db628e97ce20.png",
     "static/media/hungryghost.png": "/gates-of-hell/static/media/hungryghost.ea6f2ed6df3b875cf6a4.png",
     "static/media/fujin_face.png": "/gates-of-hell/static/media/fujin_face.d132317e6539cbaaf676.png",
@@ -19,8 +16,6 @@
     "static/media/torture.png": "/gates-of-hell/static/media/torture.ea13e2f53d8f27d61073.png",
     "static/media/possible_header_background.png": "/gates-of-hell/static/media/possible_header_background.4fad5de7fbf22a99509e.png",
     "static/media/jagadamba_om.mp3": "/gates-of-hell/static/media/jagadamba_om.36d34231d80336498500.mp3",
-    "static/media/Acala_at_Buddha_Tooth_Relic_Temple_Redder.webp": "/gates-of-hell/static/media/Acala_at_Buddha_Tooth_Relic_Temple_Redder.636b9d565f50eeb25c6c.webp",
-    "static/media/sanjo_palace_burning.jpg": "/gates-of-hell/static/media/sanjo_palace_burning.f809c9c217da0b5cec42.jpg",
     "static/media/SlightBackground.mp3": "/gates-of-hell/static/media/SlightBackground.e2db45933a440be2bac6.mp3",
     "static/media/SlightBackground2.mp3": "/gates-of-hell/static/media/SlightBackground2.53002aec8dddbce3bb60.mp3",
     "static/media/dazu_baoding.png": "/gates-of-hell/static/media/dazu_baoding.a922bac4b9b5e35a06f8.png",
@@ -32,10 +27,12 @@
     "static/media/Arya_Achala.jpg": "/gates-of-hell/static/media/Arya_Achala.b7d8cc55a80cd87ba35d.jpg",
     "static/media/HauntingDrums0.01.mp3": "/gates-of-hell/static/media/HauntingDrums0.01.7eac6c98581b2fb1869f.mp3",
     "static/media/ganapataye__04_bells.mp3": "/gates-of-hell/static/media/ganapataye__04_bells.9af69c4834a9da8e67d5.mp3",
+    "static/media/sanjo_palace_burning.webp": "/gates-of-hell/static/media/sanjo_palace_burning.32c49b2d7ebd26e80ec7.webp",
     "static/media/bing3.webp": "/gates-of-hell/static/media/bing3.57f5625f7b1c7844bfed.webp",
     "static/media/bing5.webp": "/gates-of-hell/static/media/bing5.ef09b1aaf4b6fb1eb953.webp",
     "static/media/TuboIconTrans.webp": "/gates-of-hell/static/media/TuboIconTrans.4ddafc936ce12df3d98d.webp",
     "static/media/bing6.webp": "/gates-of-hell/static/media/bing6.d20368850110b014adfb.webp",
+    "static/media/Fudo_Altar_Medium.webp": "/gates-of-hell/static/media/Fudo_Altar_Medium.96d30cae98aae9190dd2.webp",
     "static/media/bing1.webp": "/gates-of-hell/static/media/bing1.c1cd30acc7d594a563e2.webp",
     "static/media/horsehead.webp": "/gates-of-hell/static/media/horsehead.e3e4e58787f4908b087c.webp",
     "static/media/shadowedBackground.png": "/gates-of-hell/static/media/shadowedBackground.008c00d8c4d4c98a7407.png",
@@ -61,6 +58,7 @@
     "static/media/dazu_baoding.webp": "/gates-of-hell/static/media/dazu_baoding.2c8c3b077a23cf0bd485.webp",
     "static/media/Futen_bowed_trans.webp": "/gates-of-hell/static/media/Futen_bowed_trans.a73c3a5c90a086f720bd.webp",
     "static/media/Fudo_icon.webp": "/gates-of-hell/static/media/Fudo_icon.468d1b6042d5438c7fd9.webp",
+    "static/media/background_swatch.webp": "/gates-of-hell/static/media/background_swatch.ed4bb01e9009d1eb8075.webp",
     "static/media/shadowedBackground.webp": "/gates-of-hell/static/media/shadowedBackground.e6e5337ac4d9f091c445.webp",
     "static/media/jagadamba__tambourine-1.mp3": "/gates-of-hell/static/media/jagadamba__tambourine-1.62f9e7d090cce95c319b.mp3",
     "static/media/doubleTambourine.mp3": "/gates-of-hell/static/media/doubleTambourine.50c1b3ecb8fab9381efe.mp3",
@@ -68,15 +66,12 @@
     "static/media/bloodyeyes.webp": "/gates-of-hell/static/media/bloodyeyes.72464c630b4a1cda09c4.webp",
     "static/media/newGreenSwatch.webp": "/gates-of-hell/static/media/newGreenSwatch.69f82d2ddec647d26dbf.webp",
     "index.html": "/gates-of-hell/index.html",
-    "main.818d7b4f.css.map": "/gates-of-hell/static/css/main.818d7b4f.css.map",
-    "main.31310f5b.js.map": "/gates-of-hell/static/js/main.31310f5b.js.map",
-    "578.82de8d99.chunk.js.map": "/gates-of-hell/static/js/578.82de8d99.chunk.js.map",
-    "435.5dc5f7ee.chunk.js.map": "/gates-of-hell/static/js/435.5dc5f7ee.chunk.js.map",
-    "870.2361f248.chunk.js.map": "/gates-of-hell/static/js/870.2361f248.chunk.js.map",
-    "665.069f4542.chunk.js.map": "/gates-of-hell/static/js/665.069f4542.chunk.js.map"
+    "main.a5268738.css.map": "/gates-of-hell/static/css/main.a5268738.css.map",
+    "main.7a211697.js.map": "/gates-of-hell/static/js/main.7a211697.js.map",
+    "230.e3c13ff7.chunk.js.map": "/gates-of-hell/static/js/230.e3c13ff7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.818d7b4f.css",
-    "static/js/main.31310f5b.js"
+    "static/css/main.a5268738.css",
+    "static/js/main.7a211697.js"
   ]
 }
