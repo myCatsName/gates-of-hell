@@ -10,7 +10,7 @@ import StatsPanel from "../Components/StatsPanel";
 //assets
 import headerLinen from "../Assets/Swatches/possible_header_background.webp";
 import linen from "../Assets/Swatches/lightToDarkLinen.png";
-import AltarImage from "../Assets/Acala_at_Buddha_Tooth_Relic_Temple_Redder.webp";
+import AltarImage from "../Assets/Fudo_Altar_Medium.webp";
 import SidePanels from "./SidePanel";
 
 export default function RootLayout() {
@@ -38,8 +38,7 @@ export default function RootLayout() {
         id="fudoAltarImage"
         gridArea="2/4/6/10"
         backgroundImage={AltarImage}
-        backgroundPosition="center"
-        objectFit="cover"
+        backgroundPosition="50% 45%"
       />
 
       <GridItem gridArea="1/1/5/13">

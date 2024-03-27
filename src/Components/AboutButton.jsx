@@ -57,7 +57,7 @@ export default function AboutButton() {
               <br />
               "OM" and other sound effects by "Freesound.org" and "Jagadamba"
               <br />
-              "Tubo" icon made with Bing AI.
+              Demon images made with Bing AI.
               <br />
               V.{VERSION}
             </Text>
@@ -68,11 +68,7 @@ export default function AboutButton() {
                 onClose();
                 sfxOnClose();
               }}
-              backgroundColor={"brown"}
-              border={"2px solid gold"}
-              textShadow={"0px 0px 2px gold"}
-              _hover={{ backgroundColor: "gold", border: "2px solid brown" }}
-              transition="all 0.3s ease-in-out"
+              className="modal-button"
             >
               Go Back
             </Button>

@@ -20,7 +20,7 @@ export default function NohDrummer() {
   return (
     <Image
       src={Noh_drummer}
-      className="OverlayImage NohDrummer"
+      className="OverlayImage noh-drummer"
       maxH={"300px"}
       alt="Young Man Playing a Noh Drum"
       position={"absolute"}
@@ -28,7 +28,6 @@ export default function NohDrummer() {
       left="-15"
       onClick={handleClick}
       pointerEvents={"none"}
-      zIndex={"2"}
     ></Image>
   );
 }

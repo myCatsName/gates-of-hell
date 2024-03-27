@@ -4,7 +4,6 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
-  ModalHeader,
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -29,25 +28,18 @@ export default function OptionsButton() {
         Options
       </FooterButton>
 
-      <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+      <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
         <ModalOverlay />
         <ModalContent
           className="optionsModal"
           textAlign={"center"}
           backgroundImage={very_dark_swatch}
           color={"green.400"}
-          border={"4px solid black"}
+          outline={"4px solid black"}
           textShadow={"2px 2px 5px black"}
           filter={`drop-shadow(0 20px 1rem rgba(14, 13, 13, 0.8))`}
         >
-          <ModalHeader
-            textAlign="center"
-            fontSize="2xl"
-            textDecor={"underline"}
-          >
-            OPTIONS
-          </ModalHeader>
-          <ModalBody textAlign="justify" p="20px">
+          <ModalBody>
             <OptionsPage />
           </ModalBody>
           <ModalFooter justifyContent="center">
@@ -56,7 +48,7 @@ export default function OptionsButton() {
                 onClose();
                 playDoubleTamborineSFX();
               }}
-              className="ModalButton"
+              className="modal-button"
             >
               Go Back
             </Button>
