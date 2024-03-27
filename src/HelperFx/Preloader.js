@@ -70,3 +70,4 @@ useEffect(() => {setTimeout(()=>{
   useEffect(()=>
   {if (loadGame && jumpChance.current !== 0) {setTimeout(()=>{preload(jumpImage)},5000)}},[loadGame, jumpChance])
   }
+  
