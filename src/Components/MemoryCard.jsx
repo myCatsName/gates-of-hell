@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ThemeContext from "../Context/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
+import { usePrefersReducedMotion } from "@chakra-ui/react";
 
 export default function MemoryCard({
   card,
@@ -10,6 +11,7 @@ export default function MemoryCard({
   index,
 }) {
   const { currentTheme } = useContext(ThemeContext);
+  const motionReduced = usePrefersReducedMotion();
 
   const handleClick = () => {
     if (!disabled) handleChoice(card);
@@ -31,20 +33,25 @@ export default function MemoryCard({
         onAnimationStart={onDeckAnimateStart}
         onAnimationComplete={onDeckAnimateEnd}
         initial={{
-          y: "500%",
-          // rotateX: "360deg",
-          rotateX: "1080deg",
-          rotateY: "360deg",
+          opacity: motionReduced ? 0 : 1,
+          y: motionReduced ? "0%" : "500%",
+          rotateX: motionReduced ? "0deg" : "1080deg",
+          rotateY: motionReduced ? "0deg" : "360deg",
           scale: 0.3,
         }}
-        animate={{ y: "0%", rotateX: "0deg", rotateY: "0deg", scale: 1 }}
+        animate={{
+          opacity: 1,
+          y: "0%",
+          rotateX: "0deg",
+          rotateY: "0deg",
+          scale: 1,
+        }}
         exit={{}}
         transition={{
           delay: 0.5 + 0.1 * index + Math.random() * 0.5,
           duration: 2.7,
           ease: "circIn",
           type: "spring",
-          // damping: 19,
         }}
       >
         <img
