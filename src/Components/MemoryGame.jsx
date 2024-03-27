@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useRef, useMemo } from "react";
+import { useEffect, useState, useContext, useMemo, useCallback } from "react";
 import MemoryCard from "./MemoryCard";
 import { Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import GameContext from "../Context/GameContext";
@@ -43,23 +43,24 @@ export default function MemoryGame() {
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
   const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
-  const isPerfect = useRef(true);
-  const { stats, setStats, jumpChance } = useContext(GameContext);
+  const { stats, setStats, jumpChance, setGameFinished, isPerfect } =
+    useContext(GameContext);
 
-  function shuffleCards() {
+  const shuffleCards = useCallback(() => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
+    setGameFinished(false);
     setChoiceOne(null);
     setChoiceTwo(null);
     setDeck(shuffledCards);
     isPerfect.current = true;
     setMatchesNeeded(cardImages.length - 1);
-  }
+  }, [setGameFinished, isPerfect]);
 
   useEffect(() => {
     shuffleCards();
-  }, []);
+  }, [shuffleCards]);
 
   const resetTurn = () => {
     setChoiceOne(null);
@@ -98,6 +99,7 @@ export default function MemoryGame() {
       }
       //win
       else if (choiceOne.card === choiceTwo.card && matchesNeeded === 0) {
+        setGameFinished(true);
         setDeck((prevDeck) => {
           return prevDeck.map((card) => {
             if (card.card === choiceOne.card) {
@@ -144,8 +146,11 @@ export default function MemoryGame() {
     matchesNeeded,
     stats,
     setStats,
+    isPerfect,
     jumpChance,
     jumpControl,
+    shuffleCards,
+    setGameFinished,
   ]);
 
   const deckLeft = [];

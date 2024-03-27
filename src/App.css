@@ -5,6 +5,11 @@ Body {
   user-select: none;
 }
 
+::view-transition-group(*) {
+  animation-duration: 0.45s;
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
 button {
   filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
   &:active {
@@ -77,13 +82,6 @@ but makes me a bit dizzy if both this and the background are running*/
   }
 }
 
-/*.chakra-modal__content-container targets all chakra modals and drawers*/
-
-/*TODO: BUG: animating opacity of the entry modal box seems to make it render 
-  before going to opacity 0*/
-/* .entryModal {
-  animation: opacityAnimateIn 3s forwards !important;
-} */
 @keyframes opacityAnimateIn {
   0% {
     opacity: 0;
@@ -133,6 +131,7 @@ but makes me a bit dizzy if both this and the background are running*/
 }
 .GameCard .CardReverse {
   width: 100%;
+  aspect-ratio: 4 / 5;
   border-radius: 5px;
   border: 3px solid gold;
   outline: 3px solid black;
