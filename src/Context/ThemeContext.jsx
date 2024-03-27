@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { createContext, useState } from "react";
+import { useEffect, createContext, useState } from "react";
 
 const ThemeContext = createContext();
 
 const THEMES = {
   DEFAULT: {
-    background: "background_swatch.png",
+    background: "background_swatch.webp",
     cardBack: "PlayingCardReverse.webp",
   },
   CHILL: {
@@ -25,7 +24,9 @@ export function ThemeProvider({ children }) {
   const currentTheme = THEMES[themeKeys[themeIndex]];
 
   const nextTheme = () => {
-    setThemeIndex((themeIndex + 1) % themeKeys.length);
+    document.startViewTransition(() =>
+      setThemeIndex((themeIndex + 1) % themeKeys.length)
+    );
   };
 
   useEffect(() => {
