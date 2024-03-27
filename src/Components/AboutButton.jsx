@@ -57,7 +57,7 @@ export default function AboutButton() {
               <br />
               "OM" and other sound effects by "Freesound.org" and "Jagadamba"
               <br />
-              "Tubo" icon made with Bing AI.
+              Demon images made with Bing AI.
               <br />
               V.{VERSION}
             </Text>
