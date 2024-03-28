@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gates-of-hell/static/css/main.a5268738.css",
-    "main.js": "/gates-of-hell/static/js/main.7a211697.js",
+    "main.js": "/gates-of-hell/static/js/main.24401950.js",
     "static/js/230.e3c13ff7.chunk.js": "/gates-of-hell/static/js/230.e3c13ff7.chunk.js",
     "static/media/PlayingCardReverse.png": "/gates-of-hell/static/media/PlayingCardReverse.29af7148db628e97ce20.png",
     "static/media/hungryghost.png": "/gates-of-hell/static/media/hungryghost.ea6f2ed6df3b875cf6a4.png",
@@ -67,11 +67,11 @@
     "static/media/newGreenSwatch.webp": "/gates-of-hell/static/media/newGreenSwatch.69f82d2ddec647d26dbf.webp",
     "index.html": "/gates-of-hell/index.html",
     "main.a5268738.css.map": "/gates-of-hell/static/css/main.a5268738.css.map",
-    "main.7a211697.js.map": "/gates-of-hell/static/js/main.7a211697.js.map",
+    "main.24401950.js.map": "/gates-of-hell/static/js/main.24401950.js.map",
     "230.e3c13ff7.chunk.js.map": "/gates-of-hell/static/js/230.e3c13ff7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a5268738.css",
-    "static/js/main.7a211697.js"
+    "static/js/main.24401950.js"
   ]
 }
