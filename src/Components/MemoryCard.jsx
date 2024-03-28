@@ -2,17 +2,11 @@ import { useContext } from "react";
 import ThemeContext from "../Context/ThemeContext";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function MemoryCard({
-  card,
-  handleChoice,
-  flipped,
-  disabled,
-  index,
-}) {
+const MemoryCard = ({ card, flipped, handleChoice, index }) => {
   const { currentTheme } = useContext(ThemeContext);
 
   const handleClick = () => {
-    if (!disabled) handleChoice(card);
+    handleChoice(card);
   };
 
   const footerArea = document.getElementById("footerArea");
@@ -66,4 +60,6 @@ export default function MemoryCard({
       </motion.div>
     </AnimatePresence>
   );
-}
+};
+
+export default MemoryCard;

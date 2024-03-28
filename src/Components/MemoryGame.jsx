@@ -1,19 +1,23 @@
-import { useEffect, useState, useContext, useMemo, useCallback } from "react";
-import MemoryCard from "./MemoryCard";
+import {
+  useEffect,
+  useState,
+  useContext,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import { Grid, GridItem, useDisclosure } from "@chakra-ui/react";
+import MemoryCard from "./MemoryCard";
 import GameContext from "../Context/GameContext";
 import JumpDrawer from "./JumpDrawer";
 
-// TODO: Assets should be separated, feed deck to MemoryGame as prop
+// Card Assets
 import Achala from "../Assets/CardFaces/Arya_Achala.webp";
 import dazu_baoding_shan from "../Assets/CardFaces/dazu_baoding.webp";
 import Gaki1 from "../Assets/CardFaces/Gaki1.jpg";
 import hungryghost from "../Assets/CardFaces/hungryghost.webp";
 import ghoul from "../Assets/CardFaces/Oiwa_Quai_Branly_painting_.jpg";
 import oxHead from "../Assets/CardFaces/oxhead2.webp";
-// import fujin_face from "../Assets/CardFaces/fujin_face.png";
-// import riverVictim from "../Assets/CardFaces/riverofBlood.png";
-// import tortureVictom from "../Assets/CardFaces/torture.png";
 
 //SFX
 import {
@@ -25,7 +29,6 @@ import {
 } from "../Sound/SFX";
 import { VFX } from "../HelperFx/VFX";
 
-//Use 6 cards, TODO: later will want to pull from a larger pool, and include the "sting" Fudo/Buddha pair
 const cardImages = [
   { card: Achala, matched: false },
   { card: dazu_baoding_shan, matched: false },
@@ -33,17 +36,15 @@ const cardImages = [
   { card: hungryghost, matched: false },
   { card: ghoul, matched: false },
   { card: oxHead, matched: false },
-  // { card: fujin_face, matched: false },
 ];
 
-//TODO : useReducer() instead of states
 export default function MemoryGame() {
   const [deck, setDeck] = useState([]);
-  const [disabled, setDisabled] = useState(false);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choiceTwo, setChoiceTwo] = useState(null);
-  const [matchesNeeded, setMatchesNeeded] = useState(cardImages.length - 1);
-  const { stats, setStats, jumpChance, setGameFinished, isPerfect } =
+  const matchesNeeded = useRef(cardImages.length - 1);
+  const isDisabled = useRef(false);
+  const { setStats, jumpChance, setGameFinished, isPerfect } =
     useContext(GameContext);
 
   const shuffleCards = useCallback(() => {
@@ -55,7 +56,7 @@ export default function MemoryGame() {
     setChoiceTwo(null);
     setDeck(shuffledCards);
     isPerfect.current = true;
-    setMatchesNeeded(cardImages.length - 1);
+    matchesNeeded.current = cardImages.length - 1;
   }, [setGameFinished, isPerfect]);
 
   useEffect(() => {
@@ -65,12 +66,14 @@ export default function MemoryGame() {
   const resetTurn = () => {
     setChoiceOne(null);
     setChoiceTwo(null);
-    setDisabled(false);
+    isDisabled.current = false;
   };
 
   const handleChoice = (card) => {
-    playSlapSFX();
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    if (!isDisabled.current) {
+      playSlapSFX();
+      choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+    }
   };
 
   const jumpDrawer = useDisclosure();
@@ -80,9 +83,9 @@ export default function MemoryGame() {
 
   useEffect(() => {
     if (choiceOne && choiceTwo) {
-      setDisabled(true);
+      isDisabled.current = true;
       //match
-      if (choiceOne.card === choiceTwo.card && matchesNeeded > 0) {
+      if (choiceOne.card === choiceTwo.card && matchesNeeded.current > 0) {
         setDeck((prevDeck) => {
           return prevDeck.map((card) => {
             if (card.card === choiceOne.card) {
@@ -94,11 +97,13 @@ export default function MemoryGame() {
         });
         resetTurn();
         playLockSFX();
-        setMatchesNeeded(matchesNeeded - 1);
-        console.log("match");
+        matchesNeeded.current = matchesNeeded.current - 1;
       }
       //win
-      else if (choiceOne.card === choiceTwo.card && matchesNeeded === 0) {
+      else if (
+        choiceOne.card === choiceTwo.card &&
+        matchesNeeded.current === 0
+      ) {
         setGameFinished(true);
         setDeck((prevDeck) => {
           return prevDeck.map((card) => {
@@ -112,11 +117,12 @@ export default function MemoryGame() {
         resetTurn();
         playLockSFX();
         playHauntingDrumsSFX();
-        console.log("Game Won");
-        setStats({ ...stats, cycleCount: stats.cycleCount + 1 });
-        isPerfect.current === true &&
-          setStats({ ...stats, perfectCycles: stats.perfectCycles + 1 }) &&
-          console.log("Perfect!");
+        setStats((stats) => ({ ...stats, cycleCount: stats.cycleCount + 1 }));
+        isPerfect.current &&
+          setStats((stats) => ({
+            ...stats,
+            perfectCycles: stats.perfectCycles + 1,
+          }));
         setTimeout(() => {
           shuffleCards();
         }, 5000);
@@ -126,11 +132,10 @@ export default function MemoryGame() {
       }
       //no match
       else {
-        if (isPerfect.current === true) {
+        if (isPerfect.current) {
           isPerfect.current = false;
         }
         playCleansingBellSFX();
-        console.log("no match");
         if (Math.random() >= (100 - jumpChance.current) * 0.01) {
           setTimeout(resetTurn, 1600);
           playGongs1SFX();
@@ -144,7 +149,6 @@ export default function MemoryGame() {
     choiceOne,
     choiceTwo,
     matchesNeeded,
-    stats,
     setStats,
     isPerfect,
     jumpChance,
@@ -169,7 +173,6 @@ export default function MemoryGame() {
             index={index}
             card={card}
             handleChoice={handleChoice}
-            disabled={disabled}
             flipped={
               card === choiceOne || card === choiceTwo || card.matched === true
             }
@@ -184,7 +187,6 @@ export default function MemoryGame() {
             index={index}
             card={card}
             handleChoice={handleChoice}
-            disabled={disabled}
             flipped={
               card === choiceOne || card === choiceTwo || card.matched === true
             }

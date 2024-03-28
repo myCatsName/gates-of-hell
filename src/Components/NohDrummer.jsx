@@ -5,12 +5,11 @@ import { useContext } from "react";
 import GameContext from "../Context/GameContext";
 
 export default function NohDrummer() {
-  const { stats, setStats } = useContext(GameContext);
+  const { setStats } = useContext(GameContext);
 
   const handleClick = () => {
     playOM();
-    setStats({ ...stats, omCount: stats.omCount + 1 });
-    console.log("The Noh Drummer Has Been Pressed");
+    setStats((stats) => ({ ...stats, omCount: stats.omCount + 1 }));
   };
 
   /*  TODO:
