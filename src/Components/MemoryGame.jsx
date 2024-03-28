@@ -44,7 +44,7 @@ export default function MemoryGame() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const matchesNeeded = useRef(cardImages.length - 1);
   const isDisabled = useRef(false);
-  const { stats, setStats, jumpChance, setGameFinished, isPerfect } =
+  const { setStats, jumpChance, setGameFinished, isPerfect } =
     useContext(GameContext);
 
   const shuffleCards = useCallback(() => {
@@ -98,7 +98,6 @@ export default function MemoryGame() {
         resetTurn();
         playLockSFX();
         matchesNeeded.current = matchesNeeded.current - 1;
-        console.log("match");
       }
       //win
       else if (
@@ -118,14 +117,12 @@ export default function MemoryGame() {
         resetTurn();
         playLockSFX();
         playHauntingDrumsSFX();
-        console.log("Game Won");
         setStats((stats) => ({ ...stats, cycleCount: stats.cycleCount + 1 }));
         isPerfect.current &&
           setStats((stats) => ({
             ...stats,
             perfectCycles: stats.perfectCycles + 1,
-          })) &&
-          console.log("Perfect!");
+          }));
         setTimeout(() => {
           shuffleCards();
         }, 5000);
@@ -139,7 +136,6 @@ export default function MemoryGame() {
           isPerfect.current = false;
         }
         playCleansingBellSFX();
-        console.log("no match");
         if (Math.random() >= (100 - jumpChance.current) * 0.01) {
           setTimeout(resetTurn, 1600);
           playGongs1SFX();
@@ -153,7 +149,6 @@ export default function MemoryGame() {
     choiceOne,
     choiceTwo,
     matchesNeeded,
-    stats,
     setStats,
     isPerfect,
     jumpChance,

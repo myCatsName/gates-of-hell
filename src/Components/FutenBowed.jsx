@@ -6,12 +6,12 @@ import GameContext from "../Context/GameContext";
 import { masterSFX } from "../Context/AudioContext";
 
 export default function FutenBowed() {
-  const { stats, setStats } = useContext(GameContext);
+  const { setStats } = useContext(GameContext);
 
   const handleClick = () => {
     playOM();
-    masterSFX !== 0 && setStats({ ...stats, omCount: stats.omCount + 1 });
-    console.log("Futen Has Been Pressed");
+    masterSFX !== 0 &&
+      setStats((stats) => ({ ...stats, omCount: stats.omCount + 1 }));
   };
 
   return (

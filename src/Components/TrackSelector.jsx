@@ -35,7 +35,6 @@ export default function TrackSelector() {
     Howler.stop();
     sfxOnClick();
     setCurrentBGAudio((currentBGAudio + 1) % backgroundAudioTrack.length);
-    console.log(`Now playing ${backgroundAudio[currentBGAudio]}`);
     toast({
       position: "bottom-left",
       duration: 1500,
