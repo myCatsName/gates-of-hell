@@ -1,6 +1,6 @@
 export const VFX = {
     'JUMP':{
-        'DARKJUMP' : (jump) => {const sidePanels = document.querySelectorAll(".sidePanel");
+        'DARKJUMP' : (jump) => {const sidePanels = document.querySelectorAll(".sidepanel");
         setTimeout(() => {
           sidePanels.forEach((side) => side.classList.add("GrayJumpFilter"));
         }, 100);
@@ -13,7 +13,7 @@ export const VFX = {
         }, 1500);}
         ,
         'DARKHUESHAKE' : (jump) => {
-        const sidePanels = document.querySelectorAll(".sidePanel");
+        const sidePanels = document.querySelectorAll(".sidepanel");
         const cards = document.querySelectorAll(".GameCard");
         setTimeout(() => {
           sidePanels.forEach((side) => side.classList.add("GrayJumpFilter"));
@@ -38,7 +38,7 @@ export const VFX = {
         }, 1500);
       },
       'DARKSHAKE' : (jump) => {
-        const sidePanels = document.querySelectorAll(".sidePanel");
+        const sidePanels = document.querySelectorAll(".sidepanel");
         const cards = document.querySelectorAll(".GameCard");
         setTimeout(() => {
           sidePanels.forEach((side) => side.classList.add("GrayJumpFilter"));
