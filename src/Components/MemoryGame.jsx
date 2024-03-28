@@ -1,19 +1,23 @@
-import { useEffect, useState, useContext, useRef, useMemo } from "react";
+import {
+  useEffect,
+  useState,
+  useContext,
+  useMemo,
+  useRef,
+  useCallback,
+} from "react";
 import { Grid, GridItem, useDisclosure } from "@chakra-ui/react";
 import MemoryCard from "./MemoryCard";
 import GameContext from "../Context/GameContext";
 import JumpDrawer from "./JumpDrawer";
 
-// TODO: Assets should be separated, feed deck to MemoryGame as prop
+// Card Assets
 import Achala from "../Assets/CardFaces/Arya_Achala.webp";
 import dazu_baoding_shan from "../Assets/CardFaces/dazu_baoding.webp";
 import Gaki1 from "../Assets/CardFaces/Gaki1.jpg";
 import hungryghost from "../Assets/CardFaces/hungryghost.webp";
 import ghoul from "../Assets/CardFaces/Oiwa_Quai_Branly_painting_.jpg";
 import oxHead from "../Assets/CardFaces/oxhead2.webp";
-// import fujin_face from "../Assets/CardFaces/fujin_face.png";
-// import riverVictim from "../Assets/CardFaces/riverofBlood.png";
-// import tortureVictom from "../Assets/CardFaces/torture.png";
 
 //SFX
 import {
@@ -23,10 +27,8 @@ import {
   playHauntingDrumsSFX,
   playGongs1SFX,
 } from "../Sound/SFX";
-import { Howler } from "howler";
 import { VFX } from "../HelperFx/VFX";
 
-//Use 6 cards, TODO: later will want to pull from a larger pool, and include the "sting" Fudo/Buddha pair
 const cardImages = [
   { card: Achala, matched: false },
   { card: dazu_baoding_shan, matched: false },
@@ -34,7 +36,6 @@ const cardImages = [
   { card: hungryghost, matched: false },
   { card: ghoul, matched: false },
   { card: oxHead, matched: false },
-  // { card: fujin_face, matched: false },
 ];
 
 export default function MemoryGame() {
@@ -43,23 +44,24 @@ export default function MemoryGame() {
   const [choiceTwo, setChoiceTwo] = useState(null);
   const matchesNeeded = useRef(cardImages.length - 1);
   const isDisabled = useRef(false);
-  const isPerfect = useRef(true);
-  const { setStats, jumpChance } = useContext(GameContext);
+  const { stats, setStats, jumpChance, setGameFinished, isPerfect } =
+    useContext(GameContext);
 
-  function shuffleCards() {
+  const shuffleCards = useCallback(() => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: Math.random() }));
+    setGameFinished(false);
     setChoiceOne(null);
     setChoiceTwo(null);
     setDeck(shuffledCards);
     isPerfect.current = true;
     matchesNeeded.current = cardImages.length - 1;
-  }
+  }, [setGameFinished, isPerfect]);
 
   useEffect(() => {
     shuffleCards();
-  }, []);
+  }, [shuffleCards]);
 
   const resetTurn = () => {
     setChoiceOne(null);
@@ -103,6 +105,7 @@ export default function MemoryGame() {
         choiceOne.card === choiceTwo.card &&
         matchesNeeded.current === 0
       ) {
+        setGameFinished(true);
         setDeck((prevDeck) => {
           return prevDeck.map((card) => {
             if (card.card === choiceOne.card) {
@@ -113,7 +116,6 @@ export default function MemoryGame() {
           });
         });
         resetTurn();
-        Howler.volume(0.5);
         playLockSFX();
         playHauntingDrumsSFX();
         console.log("Game Won");
@@ -138,7 +140,7 @@ export default function MemoryGame() {
         }
         playCleansingBellSFX();
         console.log("no match");
-        if (Math.random() >= (100 - jumpChance) * 0.01) {
+        if (Math.random() >= (100 - jumpChance.current) * 0.01) {
           setTimeout(resetTurn, 1600);
           playGongs1SFX();
           VFX.JUMP.DARKHUESHAKE(jumpControl);
@@ -147,7 +149,18 @@ export default function MemoryGame() {
         }
       }
     }
-  }, [choiceOne, choiceTwo, matchesNeeded, setStats, jumpChance, jumpControl]);
+  }, [
+    choiceOne,
+    choiceTwo,
+    matchesNeeded,
+    stats,
+    setStats,
+    isPerfect,
+    jumpChance,
+    jumpControl,
+    shuffleCards,
+    setGameFinished,
+  ]);
 
   const deckLeft = [];
   const deckRight = [];
