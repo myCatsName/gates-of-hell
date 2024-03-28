@@ -1,5 +1,5 @@
 import { Howl, Howler } from "howler";
-import { masterSFX } from "../Context/AudioContext";
+import { masterSFX, masterVolume } from "../Context/AudioContext";
 
 import OM from "../Sound/Effects/jagadamba_om.mp3";
 import slap from "../Sound/Effects/jagadamba__slap-11.mp3";
@@ -106,13 +106,12 @@ export function playDoubleTamborineSFX() {
 }
 
 /* the volume of music is dropped by half when HAUNTINGDRUMSSFX plays as the "win" theme,
-so the onend function puts it back up. It works, but fade would be better, and should
-not be handled in the SFX anyways. TODO: Make a victory method.*/
+so the onend function puts it back up.*/
 export function playHauntingDrumsSFX() {
   const defaultVolume = 2.5;
   const hauntingDrumsSFX = new Howl({
     src: [hauntingDrums],
-    volume: masterSFX * defaultVolume,
+    volume: Math.max(masterVolume, masterSFX) * defaultVolume,
     rate: 1,
     onplay: function () {
       pooledSFX.add({ track: hauntingDrumsSFX, defaultVolume: defaultVolume });
