@@ -5,12 +5,11 @@ import { useContext } from "react";
 import GameContext from "../Context/GameContext";
 
 export default function NohDrummer() {
-  const { stats, setStats } = useContext(GameContext);
+  const { setStats } = useContext(GameContext);
 
   const handleClick = () => {
     playOM();
-    setStats({ ...stats, omCount: stats.omCount + 1 });
-    console.log("The Noh Drummer Has Been Pressed");
+    setStats((stats) => ({ ...stats, omCount: stats.omCount + 1 }));
   };
 
   /*  TODO:
@@ -20,7 +19,7 @@ export default function NohDrummer() {
   return (
     <Image
       src={Noh_drummer}
-      className="OverlayImage NohDrummer"
+      className="OverlayImage noh-drummer"
       maxH={"300px"}
       alt="Young Man Playing a Noh Drum"
       position={"absolute"}
@@ -28,7 +27,6 @@ export default function NohDrummer() {
       left="-15"
       onClick={handleClick}
       pointerEvents={"none"}
-      zIndex={"2"}
     ></Image>
   );
 }

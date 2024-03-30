@@ -1,11 +1,11 @@
 import AboutButton from "../Components/AboutButton";
 import TrackSelector from "../Components/TrackSelector";
-import FolkLoreDrawer from "../Components/FolkLoreDrawer";
 import FutenBowed from "../Components/FutenBowed";
 import NohDrummer from "../Components/NohDrummer";
 import OptionsButton from "../Components/OptionsModal";
 import ThemeButton from "../Components/ThemeButton";
-import JumpDrawer from "../Components/JumpDrawer";
+// import FolkLoreDrawer from "../Components/FolkLoreDrawer";
+// import JumpTestButton from "../Components/JumpTestButton";
 
 export default function Footer() {
   return (
@@ -13,9 +13,9 @@ export default function Footer() {
       <NohDrummer />
       <TrackSelector />
       <ThemeButton />
-      {/* <OptionsButton /> */}
-      <FolkLoreDrawer />
-      <JumpDrawer />
+      <OptionsButton />
+      {/* <FolkLoreDrawer /> */}
+      {/* <JumpTestButton /> */}
       <AboutButton />
       <FutenBowed />
     </div>

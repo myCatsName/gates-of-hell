@@ -1,35 +1,23 @@
-##
+# Fudo Myoo At The Gates of Hell
 
-A Buddhist Horror matching game prototyped Oct 23-30, 2023
+# **Live Demo: https://mycatsname.github.io/gates-of-hell/**
 
-Live Demo: https://mycatsname.github.io/gates-of-hell/
+A Buddhist Horror music and matching game prototyped Oct 23-30, 2023
 
-## Made With
+![Jumpscare Demo](./src/Assets/github/jump_scare.gif)
 
-# JS, React, Chakra UI, BeepBox.co, Howler.js
+Interactive and responsive, using **React** state and context management.
 
-Made with [Create React App](https://github.com/facebook/create-react-app).
+4 original music tracks made with **BeepBox.co**, and loaded with custom sound effects. Sound management with **Howler.js**
 
-## Available Scripts
+![options modal](./src/Assets/github/options_modal.webp)
 
-In the project directory, you can run:
+3 unique themes, UI elements and other art use publicly available assets, **GIMP** and **Chakra UI**.
 
-### `npm start`
+Animated with **CSS**, viewTransition API and **Framer Motion**.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Framer Motion and CSS animations](./src/Assets/github/motion_card_deal.gif)
 
-The page will reload when you save changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-### `npm run deploy`
-
-Build and deploy to the live page.
+# **Live Demo: https://mycatsname.github.io/gates-of-hell/**

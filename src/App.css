@@ -2,120 +2,219 @@ Body {
   background: #333;
   overflow: hidden;
   height: 100dvh;
-  width: 100%;
+  user-select: none;
 }
 
-/*This is one way to deal with chakra UI "rings"*/
-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
+::view-transition-group(*) {
+  animation-duration: 0.45s;
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
 }
-/*TODO: for some reason the background color and hover don't work in style sheet??*/
-.WarningModalButton {
-  background-color: brown;
-  border: 2px solid gold;
+
+button {
+  filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
+  &:active {
+    transform: translateY(3px);
+  }
+}
+/*double class selector to raise specificity above ChakraUI */
+.modal-button.modal-button {
+  background: linear-gradient(
+      rgba(165, 42, 42, 0.7) 0%,
+      rgba(165, 42, 42, 0.7) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(85, 85, 85, 0.5) 15%,
+      rgba(165, 42, 42, 0.9) 78%,
+      rgba(85, 85, 85, 0.9) 95%
+    );
+  border: 3px ridge gold;
   outline: 2px solid black;
-  text-shadow: 0px 0px 2px gold;
+  outline-offset: 0;
+  text-shadow: 1px 1px 2px goldenrod;
   transition: all 0.3s ease-in-out;
-}
-.WarningModalButton:hover {
-  background-color: gold;
-  border: 2px solid brown;
+  &:hover {
+    background: rgba(218, 165, 32, 0.8)
+      linear-gradient(
+        160deg,
+        rgba(85, 85, 85, 0.6) 5%,
+        rgba(255, 215, 0, 1) 60%,
+        rgba(85, 85, 85, 0.6) 95%
+      );
+    border: 3px ridge brown;
+    z-index: 3;
+  }
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid black;
+    box-shadow: none !important;
+  }
+  &:active {
+    background: rgba(255, 215, 0, 0.8)
+      linear-gradient(
+        160deg,
+        rgba(85, 85, 85, 0.6) 5%,
+        rgba(255, 215, 0, 1) 60%,
+        rgba(85, 85, 85, 0.6) 95%
+      );
+  }
 }
 
-.Stats ul {
-  margin: 0px;
+/*TODO: background properties are not performant to animate,
+maybe use an image element with transform */
+/*TODO: background image always fills the screen, but not
+always animating on some resolution sizes.*/
+
+/*target the red modal background with .entryModal
+but makes me a bit dizzy if both this and the background are running*/
+@media (prefers-reduced-motion: no-preference) {
+  .entryBackground {
+    animation: entryBackground 12s alternate infinite;
+    background-position: 0 0;
+    background-size: 1.1;
+  }
+  @keyframes entryBackground {
+    100% {
+      /* can also target the red modal background and loop
+     x or y values -40.5% 31% for example animation: entryBackground 30s linear infinite running; */
+      background-position: 0 31%;
+    }
+  }
+}
+
+@keyframes opacityAnimateIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .Stats li {
-  margin: 0px;
-  padding: 0px;
-  line-height: 1em;
+  line-height: 1.25em;
+  opacity: 0;
+  animation: opacityAnimateIn 3s 3s forwards;
 }
 
 .OverlayImage {
-  z-index: 2;
+  z-index: 20;
+  filter: drop-shadow(0 2px 1rem rgba(14, 13, 13, 0.8));
 }
 
 /* TODO: improve responsive design. This removes the drummer and monk on mobile size, so it's roughly playable.*/
 @media screen and (max-width: 719px), screen and (max-height: 719px) {
   .OverlayImage {
-    display: none;
+    display: none !important;
   }
 }
 
 .MemoryGameLayout {
-  margin-top: 1em;
+  padding-top: 1em;
   position: absolute;
 }
-
 .MemoryGameLeft,
 .MemoryGameRight {
-  margin: 2vw;
-  margin-top: 0vh;
-  margin-bottom: 2vh;
+  padding: 2vh 2vw;
   display: grid;
-  /* height: 100%; */
   grid-template-columns: repeat(2, 1fr);
   gap: 2vh 2vw;
 }
-
 .MemoryGameLeft {
   gap: 1vh 2vw; /* smaller left side due to larger Noh_drummer image at bottom */
 }
-
 .GameCard {
   position: relative;
   width: 100%;
   z-index: 1;
+  filter: drop-shadow(0 0 1rem rgba(14, 13, 13, 0.8));
 }
-
 .GameCard .CardReverse {
   width: 100%;
-  display: absolute;
-  border: 3px solid gold;
+  aspect-ratio: 4 / 5;
   border-radius: 5px;
-  box-shadow: "0px 12px 2px brown";
+  border: 3px solid gold;
   outline: 3px solid black;
   transition: all ease-out;
   transition-delay: 0.15s;
 }
-
-.flipped .CardReverse {
-  transform: rotateY(90deg);
-}
-
 .GameCard .CardFront {
   transform: rotateY(90deg);
+  width: 100%;
   position: absolute;
   transition: all ease-out 0.15s;
-  width: 100%;
-  display: block;
   border: 3px solid brown;
   border-radius: 5px;
   outline: 3px solid black;
 }
 
+/*CARD ANIMATIONS*/
+.flipped .CardReverse {
+  transform: rotateY(90deg);
+}
 .flipped .CardFront {
   transform: rotatey(0deg);
   transition-delay: 0.15s;
 }
+.gameCardFadeOut {
+  opacity: 0;
+  transition: all 3s 1s;
+}
+.cardShake {
+  animation: cardShake 0.07s ease-in-out 0.3s 8 alternate;
+}
 
-.Folklore {
-  /* background-image: url('./Assets/UI/brown_UI_Box.png'); */
-  background-size: "100% 100%";
-  border: "3px solid black";
-  box-shadow: "0px 2px 2px brown";
-  color: goldenrod;
-  width: "10vw";
-  height: "5vh";
-  position: "relative";
-  top: "-2vh";
-  transition: "border 0.3s ease-in-out";
-  /* _hover: {{
-  background-image: url('./Assets/UI/brown_UI_Box.png'),
-  border: "2px solid gold" }};
-  _active:{{
-      background-image: url('./Assets/UI/brown_UI_Box.png'),
-      border: "2px solid gold" }}; */
+.cardHueFilter {
+  --hue-variable: 0deg;
+  filter: hue-rotate(calc(322deg - var(--hue-variable))) grayscale(50%)
+    contrast(120%);
+}
+.GrayJumpFilter {
+  filter: grayscale(70%) brightness(0.4);
+  animation: grayJumpAnimation 2s ease-out;
+}
+.scaleToZero {
+  animation: scaleToZero 3.5s ease-in-out forwards,
+    grayJumpAnimation 3s reverse forwards, opacityAnimateIn 3s reverse forwards;
+}
+.cardSpin {
+  animation: cardSpin 3s infinite ease-in;
+}
+.MemoryGameRight .GameCard {
+  &.cardSpin {
+    animation: cardSpin 3s infinite reverse;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes cardShake {
+    0% {
+      transform: translate(20px);
+    }
+    100% {
+      transform: translate(-10px);
+    }
+  }
+
+  @keyframes cardSpin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes grayJumpAnimation {
+    0% {
+      filter: grayscale(70%) brightness(0.4) contrast(200%);
+    }
+    100% {
+      filter: grayscale(0%) brightness(1) contrast(100%);
+    }
+  }
+  @keyframes scaleToZero {
+    100% {
+      transform: scale(0);
+    }
+  }
 }

@@ -4,29 +4,23 @@ import FooterButton from "./FooterButton";
 import { useToast } from "@chakra-ui/react";
 import TrackSelectedToast from "./TrackPlayingToast";
 
-//Audio track names
 import {
   playTendaiTensionMusic,
-  playSlightBackgroundMusic,
+  playSanjoPalaceMusic,
   playGomaDoMusic,
   playMeditationCushion,
-  // SlightBackgroundMusic,
-  // TendaiTensionMusic,
-  // GomaDoMusic,
 } from "../Sound/BGMusic";
 
-import { slapSFX } from "../Sound/SFX";
-const sfxOnClick = slapSFX;
+import { playSlapSFX as sfxOnClick } from "../Sound/SFX";
 
 const backgroundAudioTrack = [
-  playSlightBackgroundMusic,
+  playSanjoPalaceMusic,
   playTendaiTensionMusic,
   playMeditationCushion,
   playGomaDoMusic,
 ];
 
-// The audio really needs to be re-done to allow fx and bg to control separate
-
+//Audio track names
 const backgroundAudio = [
   `"Sanjo Palace Burning"`,
   `"Tendai Tension"`,
@@ -38,11 +32,9 @@ export default function TrackSelector() {
   const [currentBGAudio, setCurrentBGAudio] = useState(1);
   const toast = useToast();
   const handleClick = () => {
-    // backgroundAudio.forEach((track) => track.stop);
     Howler.stop();
-    sfxOnClick.play();
+    sfxOnClick();
     setCurrentBGAudio((currentBGAudio + 1) % backgroundAudioTrack.length);
-    console.log(`Now playing ${backgroundAudio[currentBGAudio]}`);
     toast({
       position: "bottom-left",
       duration: 1500,

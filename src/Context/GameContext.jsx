@@ -1,9 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useRef, useState } from "react";
 
 const GameContext = createContext();
 
 export function GameProvider({ children }) {
-  const [allowJumps, setAllowJumps] = useState(false);
+  const [loadGame, setLoadGame] = useState(false);
+  const [gameFinished, setGameFinished] = useState(false);
+  const isPerfect = useRef(true);
+  const defaultJumpChance = 21;
+  const jumpChance = useRef(defaultJumpChance); // % to trigger a "jump" when not making a match
   const [stats, setStats] = useState(
     JSON.parse(localStorage.getItem("stats")) || {
       omCount: 0,
@@ -22,8 +26,13 @@ export function GameProvider({ children }) {
       value={{
         stats,
         setStats,
-        allowJumps,
-        setAllowJumps,
+        jumpChance,
+        defaultJumpChance,
+        loadGame,
+        setLoadGame,
+        gameFinished,
+        setGameFinished,
+        isPerfect,
       }}
     >
       {children}

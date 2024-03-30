@@ -1,15 +1,14 @@
-import { useEffect } from "react";
-import { createContext, useState } from "react";
+import { useEffect, createContext, useState } from "react";
 
 const ThemeContext = createContext();
 
 const THEMES = {
   DEFAULT: {
-    background: "background_swatch.png",
+    background: "background_swatch.webp",
     cardBack: "PlayingCardReverse.webp",
   },
   CHILL: {
-    background: "newGreenSwatch.png", //For some dumb reason greenSquaresSwatch.png stopped working :/
+    background: "newGreenSwatch.webp", //For some dumb reason greenSquaresSwatch.png stopped working :/
     cardBack: "EmbossedFlowerCard.webp",
   },
   SPOOKY: {
@@ -25,7 +24,9 @@ export function ThemeProvider({ children }) {
   const currentTheme = THEMES[themeKeys[themeIndex]];
 
   const nextTheme = () => {
-    setThemeIndex((themeIndex + 1) % themeKeys.length);
+    document.startViewTransition(() =>
+      setThemeIndex((themeIndex + 1) % themeKeys.length)
+    );
   };
 
   useEffect(() => {

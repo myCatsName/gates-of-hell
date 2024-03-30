@@ -8,8 +8,8 @@ export default function FooterButton({ children, onClick }) {
       backgroundSize="100% 100%"
       border="3px solid black"
       boxShadow="0px 2px 2px brown"
-      w="10vw"
-      h="5vh"
+      w="max(10vw,7rem)"
+      h="max(5vh, 32px)"
       position="relative"
       top="-2vh"
       _hover={{
@@ -20,10 +20,12 @@ export default function FooterButton({ children, onClick }) {
         backgroundImage: { brownUIBox },
         border: "2px solid gold",
       }}
+      _focus={{ boxShadow: "0px 2px 2px brown" }}
+      _focusVisible={{ boxShadow: "0px 2px 2px brown" }}
       transition="border 0.3s ease-in-out"
       onClick={onClick}
     >
-      <span style={{ color: "gold", fontFamily: "" }}>{children}</span>
+      <span style={{ color: "gold" }}>{children}</span>
     </Button>
   );
 }
