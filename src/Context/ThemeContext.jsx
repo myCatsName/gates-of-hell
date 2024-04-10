@@ -24,6 +24,9 @@ export function ThemeProvider({ children }) {
   const currentTheme = THEMES[themeKeys[themeIndex]];
 
   const nextTheme = () => {
+    if (!document.startViewTransition) {
+      return setThemeIndex((themeIndex + 1) % themeKeys.length);
+    }
     document.startViewTransition(() =>
       setThemeIndex((themeIndex + 1) % themeKeys.length)
     );

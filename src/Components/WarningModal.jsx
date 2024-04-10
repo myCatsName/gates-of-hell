@@ -32,6 +32,9 @@ export default function WarningModal() {
     startTransition(() => {
       setLoadGame(true);
     });
+    if (!document.startViewTransition) {
+      return onClose();
+    }
     document.startViewTransition(() => {
       onClose();
     });
